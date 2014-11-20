@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Web.Mvc;
 
 namespace Rentify.WebServer.Controllers
@@ -10,9 +8,27 @@ namespace Rentify.WebServer.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            var model = new HomeModel();
 
-            return View();
+            var webApiAssembly = Assembly.GetAssembly(typeof (HomeController));
+            model.AssemblyVersions.Add(new KeyValuePair<string, string>(webApiAssembly.FullName, webApiAssembly.GetName().Version.ToString()));
+
+            foreach (var item in webApiAssembly.GetReferencedAssemblies())
+            {
+                model.AssemblyVersions.Add(new KeyValuePair<string, string>(item.FullName, item.Version.ToString()));
+            }
+
+            return View(model);
+        }
+
+        public class HomeModel
+        {
+            public HomeModel()
+            {
+                AssemblyVersions = new List<KeyValuePair<string, string>>();
+            }
+
+            public List<KeyValuePair<string, string>> AssemblyVersions { get; set; }
         }
     }
 }
