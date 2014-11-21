@@ -9,16 +9,18 @@ using Owin;
 
 namespace Rentify.WebServer
 {
-    public partial class Startup
+    public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
+            var config = new HttpConfiguration();
+
+            AutomapperConfig.Setup();
+            AutofacConfig.Setup(config, app);//this must be run BEFORE app.UseWebApi(config) below
+
             //MVC related startup
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            //WebApi related startup
-            var config = new HttpConfiguration();
 
             StartupOptions.ConfigureOAuth(app);
 
