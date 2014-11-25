@@ -8,6 +8,9 @@ using Autofac.Integration.WebApi;
 using MediatR;
 using Microsoft.Practices.ServiceLocation;
 using Owin;
+using Rentify.WebServer.Data;
+using Rentify.WebServer.Data.TableStorage;
+using Rentify.WebServer.Providers;
 
 namespace Rentify.WebServer
 {
@@ -27,6 +30,10 @@ namespace Rentify.WebServer
             builder.RegisterMediatr();
             builder.RegisterCommandHandlers();
             builder.RegisterQueryHandlers();
+
+            builder.RegisterType<UserProvider>().As<IUserProvider>();
+            builder.RegisterType<RentifyDataFacade>().As<IRentifyDataFacade>();
+            builder.RegisterInstance(new RentifyTables());
 
             container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);

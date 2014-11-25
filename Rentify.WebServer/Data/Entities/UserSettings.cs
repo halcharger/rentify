@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using NExtensions;
 using Rentify.WebServer.Domain;
 
-namespace Rentify.WebServer.Data
+namespace Rentify.WebServer.Data.Entities
 {
     public class UserSettings : TableEntity
     {

@@ -12,7 +12,8 @@ namespace Rentify.WebServer
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<RentifySite, SiteModel>();
+                cfg.CreateMap<RentifySite, SiteViewModel>();
+                cfg.CreateMap<SiteBindingModel, RentifySite>();
             });
 
             Mapper.AssertConfigurationIsValid();
