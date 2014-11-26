@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using MediatR;
 using Rentify.WebServer.CommandHandlers;
 using Rentify.WebServer.Domain;
+using Rentify.WebServer.Extensions;
 using Rentify.WebServer.Models;
 using Rentify.WebServer.Providers;
 using Rentify.WebServer.QueryHandling;
@@ -33,10 +36,21 @@ namespace Rentify.WebServer.Controllers
 
         [HttpPost]
         [Route("api/mysites/add")]
-        public async Task<ICommandResult> AddSite(SiteBindingModel model)
+        public async Task<IHttpActionResult> AddSite(SiteBindingModel model)
         {
+            if (ModelState.NotValid())
+            {
+                return BadRequest(new FailureResult(ModelState).FailureMessage);
+            }
+
             var command = new AddSiteCommand(userProvider.UserId, model.MapTo<RentifySite>());
-            return await mediatr.SendAsync(command);
+            var result = await mediatr.SendAsync(command);
+
+            if (result.IsFailure)
+                return BadRequest(result.FailureMessage);
+
+            return Ok();
+
         }
     }
 }

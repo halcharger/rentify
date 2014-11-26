@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using AdaptiveSystems.AspNetIdentity.OAuth;
+using FluentValidation.WebApi;
 using Microsoft.Owin;
 using Owin;
 
@@ -27,6 +28,8 @@ namespace Rentify.WebServer
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            FluentValidationModelValidatorProvider.Configure(config);
 
             log4net.Config.XmlConfigurator.Configure();
         }
