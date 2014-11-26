@@ -35,7 +35,7 @@ namespace Rentify.WebServer.Controllers
         [Route("api/mysites/add")]
         public async Task<ICommandResult> AddSite(SiteBindingModel model)
         {
-            var command = new AddSiteCommand(model.UserId, model.MapTo<RentifySite>());
+            var command = new AddSiteCommand(userProvider.UserId, model.MapTo<RentifySite>());
             return await mediatr.SendAsync(command);
         }
     }

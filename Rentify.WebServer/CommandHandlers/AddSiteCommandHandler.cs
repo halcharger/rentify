@@ -9,6 +9,11 @@ namespace Rentify.WebServer.CommandHandlers
     {
         private readonly IRentifyDataFacade data;
 
+        public AddSiteCommandHandler(IRentifyDataFacade data)
+        {
+            this.data = data;
+        }
+
         public async Task<ICommandResult> Handle(AddSiteCommand message)
         {
             var siteUniqueIdIndex = await data.RetrieveSiteUniqueIdIndexAsync(message.Site.UniqueId);
