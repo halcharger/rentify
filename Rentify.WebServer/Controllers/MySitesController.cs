@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using MediatR;
+using NExtensions;
 using Rentify.WebServer.CommandHandlers;
 using Rentify.WebServer.Domain;
 using Rentify.WebServer.Extensions;
@@ -27,7 +28,7 @@ namespace Rentify.WebServer.Controllers
 
         [HttpPost]
         [Route("api/mysites")]
-        public async Task<IEnumerable<SiteViewModel>> GetMySites()
+        public async Task<IEnumerable<SiteViewModel>> Get()
         {
             var query = new MySitesQuery(userProvider.UserId);
             var result = await mediatr.SendAsync(query);
@@ -36,7 +37,7 @@ namespace Rentify.WebServer.Controllers
 
         [HttpPost]
         [Route("api/mysites/add")]
-        public async Task<IHttpActionResult> AddSite(SiteBindingModel model)
+        public async Task<IHttpActionResult> Add(SiteBindingModel model)
         {
             if (ModelState.NotValid())
             {
@@ -50,7 +51,22 @@ namespace Rentify.WebServer.Controllers
                 return BadRequest(result.FailureMessage);
 
             return Ok();
+        }
 
+        [HttpDelete]
+        [Route("api/mysites/delete")]
+        public async Task<IHttpActionResult> Delete(string uniqueId)
+        {
+            if (!uniqueId.HasValue())
+                return BadRequest("You must provide a value for the parameter 'uniqueId'");
+
+            var command = new DeleteSiteCommand(userProvider.UserId, uniqueId);
+            var result = await mediatr.SendAsync(command);
+
+            if (result.IsFailure)
+                return BadRequest(result.FailureMessage);
+
+            return Ok();
         }
     }
 }
