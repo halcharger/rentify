@@ -8,17 +8,7 @@ namespace Rentify.WebServer.Controllers
     {
         public ActionResult Index()
         {
-            var model = new HomeModel();
-
-            var webApiAssembly = Assembly.GetAssembly(typeof (HomeController));
-            model.AssemblyVersions.Add(new KeyValuePair<string, string>(webApiAssembly.FullName, webApiAssembly.GetName().Version.ToString()));
-
-            foreach (var item in webApiAssembly.GetReferencedAssemblies())
-            {
-                model.AssemblyVersions.Add(new KeyValuePair<string, string>(item.FullName, item.Version.ToString()));
-            }
-
-            return View(model);
+            return new FilePathResult("index.html", "text/html");
         }
 
         public class HomeModel
