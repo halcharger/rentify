@@ -276,8 +276,6 @@
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CommandHandlers\AddSiteCommand.cs" />
     <Compile Include="CommandHandlers\AddSiteCommandHandler.cs" />
@@ -286,7 +284,6 @@
     <Compile Include="CommandHandlers\FailureResult.cs" />
     <Compile Include="CommandHandlers\ICommandResult.cs" />
     <Compile Include="CommandHandlers\SuccessResult.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MySitesController.cs" />
     <Compile Include="Controllers\RentifyVersionController.cs" />
     <Compile Include="Data\Entities\SiteUniqueIdIndex.cs" />

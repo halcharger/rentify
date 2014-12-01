@@ -19,10 +19,6 @@ namespace Rentify.WebServer
             AutomapperConfig.Setup();
             AutofacConfig.Setup(config, app);//this must be run BEFORE app.UseWebApi(config) below
 
-            //MVC related startup
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-
             StartupOptions.ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
