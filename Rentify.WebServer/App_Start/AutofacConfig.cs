@@ -1,15 +1,9 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Web.Http;
 using Autofac;
-using Autofac.Extras.CommonServiceLocator;
-using Autofac.Features.Variance;
 using Autofac.Integration.WebApi;
-using MediatR;
-using Microsoft.Practices.ServiceLocation;
 using Owin;
-using Rentify.WebServer.Data;
-using Rentify.WebServer.Data.TableStorage;
+using Rentify.Core;
 using Rentify.WebServer.Providers;
 
 namespace Rentify.WebServer
@@ -26,14 +20,11 @@ namespace Rentify.WebServer
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterMediatr();
-            builder.RegisterCommandHandlers();
-            builder.RegisterQueryHandlers();
+            builder.RegisterModule<AutofacRentifyCoreModule>();
+            builder.RegisterMediatr(() => container);//a bit hacky I know.
 
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UserProvider>().As<IUserProvider>();
-            builder.RegisterType<RentifyDataFacade>().As<IRentifyDataFacade>();
-            builder.RegisterInstance(new RentifyTables());
 
             container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -43,30 +34,5 @@ namespace Rentify.WebServer
             app.UseAutofacWebApi(config);
         }
 
-        private static void RegisterCommandHandlers(this ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-                   .AsClosedTypesOf(typeof(IAsyncRequestHandler<,>))
-                   .AsImplementedInterfaces();
-        }
-
-        private static void RegisterQueryHandlers(this ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
-                   .AsClosedTypesOf(typeof(IAsyncRequest<>))
-                   .AsImplementedInterfaces();
-        }
-
-        private static void RegisterMediatr(this ContainerBuilder builder)
-        {
-            //Register MediatR
-            builder.RegisterSource(new ContravariantRegistrationSource());
-            builder.RegisterAssemblyTypes(typeof(IMediator).Assembly).AsImplementedInterfaces();
-
-            //CommonServiceLocator is used by MediatR
-            var lazy = new Lazy<IServiceLocator>(() => new AutofacServiceLocator(container));
-            var serviceLocatorProvider = new ServiceLocatorProvider(() => lazy.Value);
-            builder.RegisterInstance(serviceLocatorProvider);
-        }
     }
 }

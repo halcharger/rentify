@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Rentify.WebServer.Domain;
+using Rentify.Core.Domain;
 using Rentify.WebServer.Models;
 
 namespace Rentify.WebServer

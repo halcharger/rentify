@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using MediatR;
 using NExtensions;
-using Rentify.WebServer.CommandHandlers;
-using Rentify.WebServer.Domain;
+using Rentify.Core.CommandHandlers;
+using Rentify.Core.Domain;
+using Rentify.Core.QueryHandlers;
 using Rentify.WebServer.Extensions;
 using Rentify.WebServer.Models;
 using Rentify.WebServer.Providers;
-using Rentify.WebServer.QueryHandling;
 
 namespace Rentify.WebServer.Controllers
 {
