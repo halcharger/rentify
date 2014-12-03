@@ -26,6 +26,12 @@ namespace Rentify.Sites.Filters
 
             var result = mediatr.Send(new RentifySiteByUrlQuery(filterContext.HttpContext.Request.Url));
 
+            if (result == null)
+            {
+                filterContext.Controller.ViewBag.SiteNotFoundUrl = filterContext.HttpContext.Request.Url.ToString();
+                filterContext.HttpContext.Response.Redirect(string.Format("~/sitenotfound.html?from={0}", filterContext.HttpContext.Request.Url));
+            }
+
             var themeStyle = themes[result.ThemeId];
 
             filterContext.Controller.ViewBag.ThemeStyleCss = themeStyle;

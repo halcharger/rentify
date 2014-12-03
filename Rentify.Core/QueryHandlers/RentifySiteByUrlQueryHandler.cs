@@ -22,7 +22,7 @@ namespace Rentify.Core.QueryHandlers
             var index = data.RetrieveSiteUniqueIdIndex(siteUniqueId);
 
             if (index == null)
-                throw new SiteNotFoundException(message.RequestUri);
+                return null;
 
             var userSetting = data.RetrieveUserSettings(index.UserId);
             return userSetting.GetRentifySettings().Sites.SingleOrDefault(s => s.UniqueId == siteUniqueId);
