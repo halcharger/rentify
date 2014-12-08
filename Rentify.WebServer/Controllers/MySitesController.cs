@@ -51,7 +51,7 @@ namespace Rentify.WebServer.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete()]
         [Route("api/mysites/delete")]
         public async Task<IHttpActionResult> Delete(string uniqueId)
         {

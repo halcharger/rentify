@@ -45,9 +45,8 @@ namespace Rentify.Sites.Filters
                 filterContext.HttpContext.Response.Redirect(string.Format("~/sitenotfound.html?from={0}", filterContext.HttpContext.Request.Url));
             }
 
-            var themeStyle = themes[result.ThemeId];
-
-            filterContext.Controller.ViewBag.ThemeStyleCss = themeStyle;
+            filterContext.Controller.ViewBag.ThemeStyleCss = themes[result.ThemeId];
+            filterContext.Controller.ViewBag.SiteName = result.Name;
         }
     }
 }

@@ -26,5 +26,15 @@ namespace Rentify.Sites.Controllers
 
             return View();
         }
+
+        public ActionResult Gallery()
+        {
+            return View();
+        }
+
+        public ActionResult Availability()
+        {
+            return View();
+        }
     }
 }
