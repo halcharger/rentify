@@ -11,6 +11,11 @@ namespace Rentify.Core.CommandHandlers
             FailureMessage = failureMessage;
         }
 
+        public FailureResult(string parameterisedFailureMessage, params object[] parameters)
+        {
+            FailureMessage = string.Format(parameterisedFailureMessage, parameters);
+        }
+
         public FailureResult(ModelStateDictionary state)
         {
             FailureMessage = state.Values.SelectMany(v => v.Errors)

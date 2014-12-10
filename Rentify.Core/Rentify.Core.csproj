@@ -114,10 +114,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacRentifyCoreModule.cs" />
+    <Compile Include="CommandHandlers\AddWebPageCommand.cs" />
     <Compile Include="CommandHandlers\AddSiteCommand.cs" />
     <Compile Include="CommandHandlers\AddSiteCommandHandler.cs" />
+    <Compile Include="CommandHandlers\AddWebPageCommandHandler.cs" />
     <Compile Include="CommandHandlers\DeleteSiteCommand.cs" />
     <Compile Include="CommandHandlers\DeleteSiteCommandHandler.cs" />
+    <Compile Include="CommandHandlers\DeleteWebPageCommand.cs" />
+    <Compile Include="CommandHandlers\DeleteWebPageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\EditWebPageCommand.cs" />
+    <Compile Include="CommandHandlers\EditWebPageCommandHandler.cs" />
     <Compile Include="CommandHandlers\FailureResult.cs" />
     <Compile Include="CommandHandlers\ICommandResult.cs" />
     <Compile Include="CommandHandlers\SuccessResult.cs" />
@@ -128,6 +134,7 @@
     <Compile Include="Data\TableStorage\RentifyTables.cs" />
     <Compile Include="Domain\RentifySettings.cs" />
     <Compile Include="Domain\RentifySite.cs" />
+    <Compile Include="Domain\WebPage.cs" />
     <Compile Include="Exceptions\SiteNotFoundException.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +142,8 @@
     <Compile Include="QueryHandlers\MySitesQueryHandler.cs" />
     <Compile Include="QueryHandlers\RentifySiteByUrlQuery.cs" />
     <Compile Include="QueryHandlers\RentifySiteByUrlQueryHandler.cs" />
+    <Compile Include="QueryHandlers\SitePagesQuery.cs" />
+    <Compile Include="QueryHandlers\SitePagesQueryHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

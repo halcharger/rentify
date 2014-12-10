@@ -284,16 +284,20 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MySitesController.cs" />
     <Compile Include="Controllers\RentifyVersionController.cs" />
+    <Compile Include="Controllers\WebPagesController.cs" />
     <Compile Include="Extensions\ModelStateExtensions.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PageBindingModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\SiteBindingModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\UserProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validators\PageBindingModelValidator.cs" />
     <Compile Include="Validators\SiteBindingModelValidator.cs" />
   </ItemGroup>
   <ItemGroup>
