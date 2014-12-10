@@ -1,12 +1,13 @@
 ﻿using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
 using AdaptiveSystems.AspNetIdentity.OAuth;
 using FluentValidation.WebApi;
+using log4net.Config;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
+using Rentify.WebServer;
 
-[assembly: OwinStartup(typeof(Rentify.WebServer.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace Rentify.WebServer
 {
@@ -22,12 +23,12 @@ namespace Rentify.WebServer
             StartupOptions.ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
 
             FluentValidationModelValidatorProvider.Configure(config);
 
-            log4net.Config.XmlConfigurator.Configure();
+            XmlConfigurator.Configure();
         }
     }
 }
