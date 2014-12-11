@@ -114,18 +114,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacRentifyCoreModule.cs" />
-    <Compile Include="CommandHandlers\AddWebPageCommand.cs" />
     <Compile Include="CommandHandlers\AddSiteCommand.cs" />
     <Compile Include="CommandHandlers\AddSiteCommandHandler.cs" />
-    <Compile Include="CommandHandlers\AddWebPageCommandHandler.cs" />
     <Compile Include="CommandHandlers\DeleteSiteCommand.cs" />
     <Compile Include="CommandHandlers\DeleteSiteCommandHandler.cs" />
     <Compile Include="CommandHandlers\DeleteWebPageCommand.cs" />
     <Compile Include="CommandHandlers\DeleteWebPageCommandHandler.cs" />
-    <Compile Include="CommandHandlers\EditWebPageCommand.cs" />
-    <Compile Include="CommandHandlers\EditWebPageCommandHandler.cs" />
     <Compile Include="CommandHandlers\FailureResult.cs" />
     <Compile Include="CommandHandlers\ICommandResult.cs" />
+    <Compile Include="CommandHandlers\SaveWebPageCommand.cs" />
+    <Compile Include="CommandHandlers\SaveWebPageCommandHandler.cs" />
     <Compile Include="CommandHandlers\SuccessResult.cs" />
     <Compile Include="Data\Entities\SiteUniqueIdIndex.cs" />
     <Compile Include="Data\Entities\UserSettings.cs" />

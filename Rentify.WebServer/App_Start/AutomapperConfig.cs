@@ -13,7 +13,10 @@ namespace Rentify.WebServer
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<RentifySite, SiteViewModel>();
-                cfg.CreateMap<SiteBindingModel, RentifySite>();
+                cfg.CreateMap<SiteBindingModel, RentifySite>().ForMember(dest => dest.Pages, opt => opt.Ignore());
+
+                cfg.CreateMap<WebPage, PageViewModel>();
+                cfg.CreateMap<PageBindingModel, WebPage>();
             });
 
             Mapper.AssertConfigurationIsValid();

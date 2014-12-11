@@ -3,9 +3,9 @@ using Rentify.Core.Domain;
 
 namespace Rentify.Core.CommandHandlers
 {
-    public class AddWebPageCommand : IAsyncRequest<ICommandResult>
+    public class SaveWebPageCommand : IAsyncRequest<ICommandResult>
     {
-        public AddWebPageCommand(string userId, string siteUniqueId, WebPage webPage)
+        public SaveWebPageCommand(string userId, string siteUniqueId, WebPage webPage)
         {
             UserId = userId;
             SiteUniqueId = siteUniqueId;

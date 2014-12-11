@@ -27,5 +27,7 @@ namespace Rentify.Core.CommandHandlers
         public bool IsSuccess { get { return false; } }
         public bool IsFailure { get { return true; } }
         public string FailureMessage { get; private set; }
+
+        public object Result { get; set; }
     }
 }

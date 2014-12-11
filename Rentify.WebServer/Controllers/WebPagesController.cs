@@ -33,21 +33,21 @@ namespace Rentify.WebServer.Controllers
         }
 
         [HttpPost]
-        [Route("api/{siteUniqueId}/add")]
-        public async Task<IHttpActionResult> Add(string siteUniqueId, PageBindingModel model)
+        [Route("api/{siteUniqueId}/save")]
+        public async Task<IHttpActionResult> Save(string siteUniqueId, PageBindingModel model)
         {
             if (ModelState.NotValid())
             {
                 return BadRequest(new FailureResult(ModelState).FailureMessage);
             }
 
-            var command = new AddWebPageCommand(userProvider.UserId, siteUniqueId, model.MapTo<WebPage>());
+            var command = new SaveWebPageCommand(userProvider.UserId, siteUniqueId, model.MapTo<WebPage>());
             var result = await mediatr.SendAsync(command);
 
             if (result.IsFailure)
                 return BadRequest(result.FailureMessage);
 
-            return Ok();
+            return Ok(result.Result);
         }
 
         [HttpDelete()]
