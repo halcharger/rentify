@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MediatR;
+using Rentify.Sites.Infrastructure.Providers;
 
 namespace Rentify.Sites
 {
@@ -11,7 +13,7 @@ namespace Rentify.Sites
             AutofacConfig.Setup();
 
             AreaRegistration.RegisterAllAreas();
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, AutofacConfig.GetIMediator());//nasty!!
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, AutofacConfig.Resolve<IMediator>(), AutofacConfig.Resolve<IRentifySiteProvider>());//nasty!!
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 

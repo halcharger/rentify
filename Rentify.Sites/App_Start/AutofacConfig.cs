@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using MediatR;
 using Rentify.Core;
+using Rentify.Sites.Infrastructure.Autofac;
 
 namespace Rentify.Sites
 {
@@ -18,14 +18,15 @@ namespace Rentify.Sites
             builder.RegisterMediatr(() => container);//a bit hacky I know.
             builder.RegisterControllers(typeof (MvcApplication).Assembly);
             builder.RegisterFilterProvider();
+            builder.RegisterModule<RentifySiteAutofacModule>();
 
             container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-        public static IMediator GetIMediator()
+        public static T Resolve<T>()
         {
-            return container.Resolve<IMediator>();
+            return container.Resolve<T>();
         }
     }
 }
