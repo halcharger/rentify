@@ -30,6 +30,7 @@ namespace Rentify.Core.QueryHandlers
                 return Enumerable.Empty<WebPage>();
 
             return site.Pages;
+            return site.Pages;
         }
     }
 }
