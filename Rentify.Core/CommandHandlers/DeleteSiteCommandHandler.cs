@@ -3,10 +3,11 @@ using System.Threading.Tasks;
 using MediatR;
 using Rentify.Core.Data;
 using Rentify.Core.Data.Entities;
+using Rentify.Core.Results;
 
 namespace Rentify.Core.CommandHandlers
 {
-    public class DeleteSiteCommandHandler : IAsyncRequestHandler<DeleteSiteCommand, ICommandResult>
+    public class DeleteSiteCommandHandler : IAsyncRequestHandler<DeleteSiteCommand, IResult>
     {
         private readonly IRentifyDataFacade data;
 
@@ -15,7 +16,7 @@ namespace Rentify.Core.CommandHandlers
             this.data = data;
         }
 
-        public async Task<ICommandResult> Handle(DeleteSiteCommand message)
+        public async Task<IResult> Handle(DeleteSiteCommand message)
         {
             var userSettings = await data.RetrieveUserSettingsAsync(message.UserId);
 
@@ -32,7 +33,9 @@ namespace Rentify.Core.CommandHandlers
             var result1 = await data.UpdateUserSettingsAsync(userSettings);
             var result2 = await data.DeleteSiteUniqueIdIndexAsync(message.SiteUniqueId);
 
-            return new SuccessResult();
+            //TODO: need to check result1 and result2 for success
+
+            return SimpleResult.Success();
         }
     }
 }

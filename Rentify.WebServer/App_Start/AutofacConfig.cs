@@ -4,6 +4,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using Owin;
 using Rentify.Core;
+using Rentify.WebServer.FlowJs;
 using Rentify.WebServer.Providers;
 
 namespace Rentify.WebServer
@@ -25,7 +26,8 @@ namespace Rentify.WebServer
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UserProvider>().As<IUserProvider>();
-
+            builder.RegisterType<FlowUploadProcessor>().As<IFlowUploadProcessor>();
+            
             container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 

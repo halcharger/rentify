@@ -4,5 +4,6 @@
     {
         public string Name { get; set; }
         public string UniqueId { get; set; }
+        public string ThemeId { get; set; }
     }
 }

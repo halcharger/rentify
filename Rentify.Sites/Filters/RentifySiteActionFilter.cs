@@ -3,19 +3,15 @@ using System.Web.Mvc;
 using MediatR;
 using Rentify.Core.QueryHandlers;
 using Rentify.Sites.Infrastructure.Providers;
+using Rentify.Sites.Infrastructure.Themes;
 
 namespace Rentify.Sites.Filters
 {
     public class RentifySiteActionFilter : ActionFilterAttribute
     {
-        private IMediator mediatr;
-        private IRentifySiteProvider rentifySiteProvider;
+        private readonly IMediator mediatr;
+        private readonly IRentifySiteProvider rentifySiteProvider;
         
-        private IDictionary<string, string> themeLayoutFiles = new Dictionary<string, string>
-        {
-            {"lavilla", "~/Views/Shared/Themes/lavilla/_Layout.cshtml"}
-        };
-
         public RentifySiteActionFilter(IMediator mediatr, IRentifySiteProvider rentifySiteProvider)
         {
             this.mediatr = mediatr;
@@ -27,7 +23,11 @@ namespace Rentify.Sites.Filters
             base.OnActionExecuting(filterContext);
 
             if (rentifySiteProvider.RentifySite == null)
-                rentifySiteProvider.RentifySite = mediatr.Send(new RentifySiteByUrlQuery(filterContext.HttpContext.Request.Url));
+            {
+                var siteQuery = mediatr.Send(new RentifySiteByUrlQuery(filterContext.HttpContext.Request.Url));
+                if (siteQuery.IsSuccess)
+                    rentifySiteProvider.RentifySite = siteQuery.Result;
+            }
 
             var site = rentifySiteProvider.RentifySite;
 
@@ -39,10 +39,12 @@ namespace Rentify.Sites.Filters
             }
             else
             {
-                if (themeLayoutFiles.ContainsKey(site.ThemeId))
-                    filterContext.HttpContext.Session["ThemeLayoutFile"] = themeLayoutFiles[site.ThemeId];
-
-                filterContext.HttpContext.Session["ThemeLayoutFile"] = "~/Views/Shared/Themes/lavilla/_Layout.cshtml";
+                var theme = ThemeFactory.CreateTheme(site.ThemeId);
+                if (theme is UnknownTheme)
+                    filterContext.HttpContext.Response.Redirect(string.Format("~/themenotfound.html?from={0}",
+                        filterContext.HttpContext.Request.Url));
+                else
+                    filterContext.HttpContext.Session["Theme"] = theme;
             }
 
         }

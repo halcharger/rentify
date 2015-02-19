@@ -1,40 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Rentify.Sites.Extensions;
+using Rentify.Sites.Infrastructure.Providers;
+using Rentify.Sites.Models;
 
 namespace Rentify.Sites.Controllers
 {
     public class HomeController : Controller
     {
+        private IRentifySiteProvider siteProvider;
+
+        public HomeController(IRentifySiteProvider siteProvider)
+        {
+            this.siteProvider = siteProvider;
+        }
+
+        [Route("")]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            var site = siteProvider.RentifySite;
+            ViewBag.MainTitle = site.Property.Overview.MainTitle;
+            ViewBag.SubTitle = site.Property.Overview.SubTitle;
 
             return View();
         }
 
-        public ActionResult Contact()
+        [Route("overview")]
+        public ActionResult Overview()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Gallery()
-        {
-            return View();
-        }
-
-        public ActionResult Availability()
-        {
-            return View();
+            var theme = siteProvider.RentifySite.GetTheme();
+            var overview = siteProvider.RentifySite.Property.Overview;
+            return View(new OverviewViewModel
+            {
+                OverviewPartialPath = theme.OverviewPartialFile,
+                MainTitle = overview.MainTitle,
+                SubTitle = overview.SubTitle,
+                DescriptionHtml = overview.Description,
+                Rooms = overview.Rooms.GetRoomsViewModels(),
+                CustomRoomsHtml = overview.Rooms.CustomRoomsHtml,
+                Facts = overview.Facts.GetFactsViewModels(),
+                CustomFactsHtml = overview.Facts.CustomFactsHtml,
+                Amenities = overview.Amenities.GetAmenitiesViewModels(),
+                CustomAmenitiesHtml = overview.Amenities.CustomAmenitiesHtml
+            });
         }
     }
 }

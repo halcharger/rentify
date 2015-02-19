@@ -1,31 +1,25 @@
-﻿using System.Linq;
+﻿using System.Threading.Tasks;
 using MediatR;
-using Rentify.Core.Data;
 using Rentify.Core.Domain;
-using Rentify.Core.Exceptions;
 using Rentify.Core.Extensions;
+using Rentify.Core.Results;
 
 namespace Rentify.Core.QueryHandlers
 {
-    public class RentifySiteByUrlQueryHandler : IRequestHandler<RentifySiteByUrlQuery, RentifySite>
+    public class RentifySiteByUrlQueryHandler : IRequestHandler<RentifySiteByUrlQuery, IResult<RentifySite>>
     {
-        private readonly IRentifyDataFacade data;
+        private readonly IMediator mediatr;
 
-        public RentifySiteByUrlQueryHandler(IRentifyDataFacade data)
+        public RentifySiteByUrlQueryHandler(IMediator mediatr)
         {
-            this.data = data;
+            this.mediatr = mediatr;
         }
 
-        public RentifySite Handle(RentifySiteByUrlQuery message)
+        public IResult<RentifySite> Handle(RentifySiteByUrlQuery message)
         {
             var siteUniqueId = message.RequestUri.GetRentifyUniqueSiteId();
-            var index = data.RetrieveSiteUniqueIdIndex(siteUniqueId);
 
-            if (index == null)
-                return null;
-
-            var userSetting = data.RetrieveUserSettings(index.UserId);
-            return userSetting.GetRentifySettings().Sites.SingleOrDefault(s => s.UniqueId == siteUniqueId);
+            return mediatr.Send(new SiteQuery(siteUniqueId));
         }
 
     }

@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Microsoft.WindowsAzure.Storage;
+﻿using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Rentify.Core.Data.TableStorage
@@ -9,10 +8,9 @@ namespace Rentify.Core.Data.TableStorage
         public const string UserSettingsTableName = "UserSetting";
         public const string SiteUniqueIdIndexTableName = "SiteUniqueIdIndex";
 
-        public RentifyTables() : this("UserStore-ConnectionString") { }
-        public RentifyTables(string connectionStringName)
+        public RentifyTables() : this(RentifyConfig.RentifyAzureStorageConnectionString) { }
+        public RentifyTables(string connectionString)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
             var storageAccount = CloudStorageAccount.Parse(connectionString);
             var tableClient = storageAccount.CreateCloudTableClient();
 

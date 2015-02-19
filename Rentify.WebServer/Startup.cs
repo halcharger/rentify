@@ -17,7 +17,7 @@ namespace Rentify.WebServer
         {
             var config = new HttpConfiguration();
 
-            AutomapperConfig.Setup();
+            AutoMapperConfig.Setup();
             AutofacConfig.Setup(config, app);//this must be run BEFORE app.UseWebApi(config) below
 
             StartupOptions.ConfigureOAuth(app);

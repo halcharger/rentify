@@ -3,12 +3,10 @@ using Rentify.WebServer.Validators;
 
 namespace Rentify.WebServer.Models
 {
-    [Validator(typeof(SiteBindingModelValidator))]
-    public class SiteBindingModel
+    [Validator(typeof(UpdateSiteThemeBindingModelValidator))]
+    public class UpdateSiteThemeBindingModel
     {
-        public string Name { get; set; }
         public string UniqueId { get; set; }
         public string ThemeId { get; set; }
-        public string LayoutId { get; set; }
     }
 }

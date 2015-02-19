@@ -5,6 +5,7 @@ using Autofac.Features.Variance;
 using MediatR;
 using Microsoft.Practices.ServiceLocation;
 using Rentify.Core.Data;
+using Rentify.Core.Data.BlobStorage;
 using Rentify.Core.Data.TableStorage;
 
 namespace Rentify.Core
@@ -19,6 +20,7 @@ namespace Rentify.Core
             RegisterQueryHandlers(builder);
 
             builder.RegisterType<RentifyDataFacade>().As<IRentifyDataFacade>();
+            builder.RegisterType<RentifyBlobStorageFacade>().As<IRentifyBlobStorageFacade>();
             builder.RegisterInstance(new RentifyTables());
 
         }

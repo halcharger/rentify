@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Rentify.Core.Results;
 
 namespace Rentify.Core.CommandHandlers
 {
-    public class DeleteSiteCommand : IAsyncRequest<ICommandResult>
+    public class DeleteSiteCommand : BaseCommand, IAsyncRequest<IResult>
     {
         public DeleteSiteCommand(string userId, string siteUniqueId)
         {
@@ -10,7 +11,6 @@ namespace Rentify.Core.CommandHandlers
             SiteUniqueId = siteUniqueId;
         }
 
-        public string UserId { get; set; }
         public string SiteUniqueId { get; set; }
     }
 }

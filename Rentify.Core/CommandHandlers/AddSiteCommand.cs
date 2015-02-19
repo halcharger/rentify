@@ -1,17 +1,18 @@
 ﻿using MediatR;
-using Rentify.Core.Domain;
+using Rentify.Core.Results;
 
 namespace Rentify.Core.CommandHandlers
 {
-    public class AddSiteCommand : IAsyncRequest<ICommandResult>
+    public class AddSiteCommand : BaseCommand, IAsyncRequest<IResult>
     {
-        public AddSiteCommand(string userId, RentifySite site)
+        public AddSiteCommand(string userId, string name, string uniqueId)
         {
+            Name = name;
+            UniqueId = uniqueId;
             UserId = userId;
-            Site = site;
         }
 
-        public string UserId { get; set; }
-        public RentifySite Site { get; set; } 
+        public string Name { get; set; }
+        public string UniqueId { get; set; }
     }
 }
