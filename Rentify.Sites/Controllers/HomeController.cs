@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Rentify.Sites.Extensions;
 using Rentify.Sites.Infrastructure.Providers;
@@ -43,6 +44,21 @@ namespace Rentify.Sites.Controllers
                 Amenities = overview.Amenities.GetAmenitiesViewModels(),
                 CustomAmenitiesHtml = overview.Amenities.CustomAmenitiesHtml
             });
+        }
+
+        [Route("gallery")]
+        public ActionResult Gallery()
+        {
+            var theme = siteProvider.RentifySite.GetTheme();
+            var gallery = siteProvider.RentifySite.Gallery;
+            var viewmodel = new GalleryViewModel
+            {
+                GalleryPartialPath = theme.GalleryPartialFile,
+                Name = gallery.Name,
+                Description = gallery.Description,
+                ImageUrls = gallery.Images.Select(i => i.GetImageResizerUrl()).ToArray()
+            };
+            return View(viewmodel);
         }
     }
 }

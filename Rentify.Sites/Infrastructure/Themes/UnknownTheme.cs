@@ -11,5 +11,10 @@
         {
             get { throw new System.NotImplementedException(); }
         }
+
+        public string GalleryPartialFile
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }

@@ -13,5 +13,10 @@
         {
             get { return "~/Views/Shared/Themes/lavilla/overview.cshtml"; }
         }
+
+        public string GalleryPartialFile
+        {
+            get { return "~/Views/Shared/Themes/lavilla/gallery.cshtml"; }
+        }
     }
 }

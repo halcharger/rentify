@@ -18,6 +18,7 @@ namespace Rentify.WebServer
 
                 cfg.CreateMap<RentifySite, SiteViewModel>();
                 cfg.CreateMap<PropertyOverview, PropertyOverviewViewModel>();
+                cfg.CreateMap<AzureBlobImage, ImageViewModel>();
                 cfg.CreateMap<Gallery, GalleryViewModel>();
                 cfg.CreateMap<Location, LocationViewModel>()
                     .ForMember(dest =>
@@ -38,7 +39,7 @@ namespace Rentify.WebServer
                 cfg.RecognizePrefixes(Strings.Amenities);
                 cfg.CreateMap<UpdatePropertyOverviewBindingModel, PropertyAmenities>();
                 cfg.CreateMap<UpdatePropertyGalleryBindingModel, Gallery>()
-                    .ForMember(d => d.ImageUrls, opt => opt.Ignore());
+                    .ForMember(d => d.Images, opt => opt.Ignore());
                 cfg.CreateMap<UpdatePropertyOverviewBindingModel, PropertyOverview>()
                     .ForMember(dest => dest.Rooms, opt => opt.MapFrom(src => src))
                     .ForMember(dest => dest.Facts, opt => opt.MapFrom(src => src))

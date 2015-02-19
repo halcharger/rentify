@@ -12,12 +12,10 @@ namespace Rentify.Core.CommandHandlers
 
         public override async Task<IResult> InnerHandle(AddGalleryImageCommand message)
         {
-            var imageUrl = Gallery.GetGalleryImageUrl(RentifyConfig.RentifyAzureStorageConnectionStringAccountName, message.SiteUniqueId, message.ImageName);
+            if (site.Gallery.Images == null)
+                site.Gallery.Images = new List<AzureBlobImage>();
 
-            if (site.Gallery.ImageUrls == null)
-                site.Gallery.ImageUrls = new List<string>();
-
-            site.Gallery.ImageUrls.Add(imageUrl);
+            site.Gallery.Images.Add(message.Image);
 
             return SimpleResult.Success();
         }

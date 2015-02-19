@@ -14,6 +14,7 @@ namespace Rentify.WebServer.FlowJs
         bool IsComplete { get; }
         FileStream OpenTempFile();
         void DeleteTempFile();
+        string UploadedFileExtension();
     }
 
     /// <summary>
@@ -153,6 +154,12 @@ namespace Rentify.WebServer.FlowJs
         {
             var localFile = Path.Combine(UploadPath, MetaData.FlowFilename);
             File.Delete(localFile);
+        }
+
+        public string UploadedFileExtension()
+        {
+            var localFile = Path.Combine(UploadPath, MetaData.FlowFilename);
+            return new FileInfo(localFile).Extension;
         }
 
         public FileStream OpenTempFile()

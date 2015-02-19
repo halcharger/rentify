@@ -134,9 +134,8 @@
     <Compile Include="CommandHandlers\UpdateSiteComponentBaseCommand.cs" />
     <Compile Include="CommandHandlers\UpdateSiteComponentBaseHandler.cs" />
     <Compile Include="Data\BlobStorage\RentifyBlobStorageFacade.cs" />
+    <Compile Include="Domain\AzureBlobImage.cs" />
     <Compile Include="Domain\Gallery.cs" />
-    <Compile Include="QueryHandlers\GalleryImageUrlsQuery.cs" />
-    <Compile Include="QueryHandlers\GalleryImageUrlsQueryHandler.cs" />
     <Compile Include="QueryHandlers\GalleryQuery.cs" />
     <Compile Include="QueryHandlers\GalleryQueryHandler.cs" />
     <Compile Include="RentifyConfig.cs" />

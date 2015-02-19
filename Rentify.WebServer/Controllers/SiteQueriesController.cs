@@ -50,18 +50,5 @@ namespace Rentify.WebServer.Controllers
 
             return Ok(query.Result.MapTo<GalleryViewModel>());
         }
-
-        [HttpGet]
-        [Route("api/site/galleryimageurls")]
-        public async Task<IHttpActionResult> GetGalleryImageUrls(string siteUniqueId, string galleryId)
-        {
-            var query = await mediatr.SendAsync(new GalleryImageUrlsQuery(siteUniqueId, galleryId));
-
-            if (query.IsFailure)
-                return BadRequest(query.FailureMessage);
-
-            return Ok(query.Result.MapTo<GalleryViewModel>());
-        }
-         
     }
 }

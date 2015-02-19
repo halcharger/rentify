@@ -1,14 +1,17 @@
-﻿namespace Rentify.Core.CommandHandlers
+﻿using Rentify.Core.Domain;
+
+namespace Rentify.Core.CommandHandlers
 {
     public class AddGalleryImageCommand : UpdateSiteComponentBaseCommand
     {
-        public AddGalleryImageCommand(string siteUniqueId, string userId, string galleryId, string imageName) : base(userId, siteUniqueId)
+        public AddGalleryImageCommand(string siteUniqueId, string userId, string galleryId, AzureBlobImage image)
+            : base(userId, siteUniqueId)
         {
             GalleryId = galleryId;
-            ImageName = imageName;
+            Image = image;
         }
 
         public string GalleryId { get; set; }
-        public string ImageName { get; set; }
+        public AzureBlobImage Image { get; set; }
     }
 }

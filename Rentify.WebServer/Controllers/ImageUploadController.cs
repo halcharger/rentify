@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -8,6 +7,7 @@ using System.Web.Http;
 using MediatR;
 using Rentify.Core.CommandHandlers;
 using Rentify.Core.Data.BlobStorage;
+using Rentify.Core.Domain;
 using Rentify.WebServer.FlowJs;
 using Rentify.WebServer.Providers;
 
@@ -32,7 +32,9 @@ namespace Rentify.WebServer.Controllers
         [Route("api/site/mapimage/upload"), HttpPost]
         public async Task<IHttpActionResult> UploadCustomMapImage(string siteUniqueId)
         {
-            return await Upload(siteUniqueId, blobStorage.UploadCustomMapImageBlob);
+            var aib = await Upload(siteUniqueId, "custommapimage");
+
+            return Ok();
         }
 
         [Route("api/site/gallery/upload"), HttpPost]
@@ -40,15 +42,17 @@ namespace Rentify.WebServer.Controllers
         {
             var imageName = Guid.NewGuid().ToString();
 
-            var result = await mediatr.SendAsync(new AddGalleryImageCommand(siteUniqueId, userProvider.UserId, galleryId, imageName));
+            var aib = await Upload(siteUniqueId, imageName);
+
+            var result = await mediatr.SendAsync(new AddGalleryImageCommand(siteUniqueId, userProvider.UserId, galleryId, aib));
 
             if (result.IsFailure)
                 return BadRequest(result.FailureMessage);
 
-            return await Upload(siteUniqueId, async (sui, file) => await blobStorage.UploadGalleryImageBlob(sui, imageName, file));
+            return Ok();
         }
 
-        protected async Task<IHttpActionResult> Upload(string siteUniqueId, Func<string, FileStream, Task> uploadBlob)
+        protected async Task<AzureBlobImage> Upload(string siteUniqueId, string imageName)
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -57,18 +61,19 @@ namespace Rentify.WebServer.Controllers
 
             await uploadProcessor.ProcessUploadChunkRequest(Request);
 
+            var blobName = string.Concat(imageName, ".", uploadProcessor.UploadedFileExtension());
             if (uploadProcessor.IsComplete)
             {
-                using (var fileStream = uploadProcessor.OpenTempFile())
+                using (var file = uploadProcessor.OpenTempFile())
                 {
-                    await uploadBlob(siteUniqueId, fileStream);
+                    await blobStorage.UploadImageBlob(siteUniqueId, blobName, file);
                 }
 
                 //delete local temp file
                 uploadProcessor.DeleteTempFile();
             }
 
-            return Ok();
+            return new AzureBlobImage(siteUniqueId, blobName);
         }
 
         [Route("api/site/mapimage/upload"), 

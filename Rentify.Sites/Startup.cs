@@ -8,8 +8,6 @@ namespace Rentify.Sites
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
-
         }
     }
 }

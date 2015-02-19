@@ -4,5 +4,6 @@
     {
         string LayoutFile { get; }
         string OverviewPartialFile { get; }
+        string GalleryPartialFile { get; }
     }
 }

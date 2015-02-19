@@ -7,8 +7,7 @@ namespace Rentify.Core.Data.BlobStorage
 {
     public interface IRentifyBlobStorageFacade
     {
-        Task UploadCustomMapImageBlob(string siteUniqueId, FileStream file);
-        Task UploadGalleryImageBlob(string siteUniqueId, string fileName, FileStream file);
+        Task UploadImageBlob(string containerName, string blobName, FileStream file);
     }
 
     public class RentifyBlobStorageFacade : IRentifyBlobStorageFacade
@@ -22,24 +21,14 @@ namespace Rentify.Core.Data.BlobStorage
             blobClient = storageAccount.CreateCloudBlobClient();
         }
 
-        public async Task UploadCustomMapImageBlob(string siteUniqueId, FileStream file)
+        public async Task UploadImageBlob(string containerName, string blobName, FileStream file)
         {
-            await UploadBlob(siteUniqueId, "custommapimage", file);
-        }
-
-        public async Task UploadGalleryImageBlob(string siteUniqueId, string fileName, FileStream file)
-        {
-            await UploadBlob(siteUniqueId, fileName, file);
-        }
-
-        protected async Task UploadBlob(string container, string blobname, FileStream file)
-        {
-            var blobContainer = blobClient.GetContainerReference(container);
+            var blobContainer = blobClient.GetContainerReference(containerName);
 
             await blobContainer.CreateIfNotExistsAsync();
             blobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-            var blob = blobContainer.GetBlockBlobReference(blobname);
+            var blob = blobContainer.GetBlockBlobReference(blobName);
 
             blob.UploadFromStream(file);
         }
