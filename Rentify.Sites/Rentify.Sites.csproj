@@ -339,6 +339,7 @@
     <Content Include="Views\Home\Overview.cshtml" />
     <Content Include="Views\Shared\Themes\lavilla\overview.cshtml" />
     <Content Include="Views\Shared\Themes\lavilla\gallery.cshtml" />
+    <None Include="Properties\PublishProfiles\rentifysites01.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
