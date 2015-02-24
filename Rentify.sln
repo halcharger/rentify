@@ -23,6 +23,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9B35E9
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Rentify.Client", "http://localhost:1694", "{F010653D-5311-4E09-92C9-58FAF5BA5022}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_1694"
+		Debug.AspNetCompiler.PhysicalPath = "Rentify.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1694\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_1694"
+		Release.AspNetCompiler.PhysicalPath = "Rentify.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1694\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Rentify.Client\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +62,10 @@ Global
 		{9B233A03-825A-4F2E-88E3-CA3B3E4E9BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B233A03-825A-4F2E-88E3-CA3B3E4E9BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B233A03-825A-4F2E-88E3-CA3B3E4E9BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F010653D-5311-4E09-92C9-58FAF5BA5022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F010653D-5311-4E09-92C9-58FAF5BA5022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F010653D-5311-4E09-92C9-58FAF5BA5022}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F010653D-5311-4E09-92C9-58FAF5BA5022}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
