@@ -3,8 +3,24 @@
 
     angular
         .module('app.core', [
-            'ngAnimate', 'ngSanitize',
+            //core ng modules
+            'ngAnimate',
+            'ngCookies',
+            'ngResource',
+            'ngRoute',
+            'ngSanitize',
+            'ngTouch',
+
+            //our custom modules
             'blocks.exception', 'blocks.logger', 'blocks.router',
-            'ui.router', 'ngplus'
+
+            //3rd party modules
+            'ui.router',
+            'ngplus',
+            'LocalStorageModule',
+            'angular-data.DSCacheFactory',
+            'ui.bootstrap',
+            'flow',
+            'angular-images-loaded'
         ]);
 })();

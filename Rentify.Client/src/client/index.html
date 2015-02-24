@@ -12,10 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <base href="/">
 
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
     <!-- build:css styles/lib.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
     <!-- endbower -->
     <!-- endbuild -->
@@ -23,51 +25,73 @@
     <!-- build:css styles/app.css-->
     <!-- inject:css -->
     <link rel="stylesheet" href="/.tmp/styles.css">
+    <link rel="stylesheet" href="/.tmp/metronic/simple-line-icons/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/.tmp/metronic/layout3/css/components-rounded.css">
+    <link rel="stylesheet" href="/.tmp/metronic/layout3/css/custom.css">
+    <link rel="stylesheet" href="/.tmp/metronic/layout3/css/layout.css">
+    <link rel="stylesheet" href="/.tmp/metronic/layout3/css/plugins.css">
+    <link rel="stylesheet" href="/.tmp/metronic/layout3/css/themes/default.css">
     <!-- endinject -->
     <!-- endbuild -->
 </head>
 <body>
-    <div>
-        <div ng-include="'app/layout/shell.html'"></div>
-        <div id="splash-page" ng-show="false">
-            <div class="page-splash">
-                <div class="page-splash-message">
-                    rentifyClientApp
-                </div>
-                <div class="progress progress-striped active page-progress-bar">
-                    <div class="bar"></div>
-                </div>
-            </div>
+    <div ng-include="'app/layout/shell.html'"></div>
+    <div ngplus-overlay
+         ngplus-overlay-delay-in="50"
+         ngplus-overlay-delay-out="300"
+         ngplus-overlay-animation="dissolve-animation">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
         </div>
     </div>
+
+    <script src="/scripts/metronic/metronic.js" type="text/javascript"></script>
+    <script src="/scripts/metronic/layout.js" type="text/javascript"></script>
+    <script src="/scripts/metronic/demo.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/es5-shim/es5-shim.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
-    <script src="/bower_components/moment/moment.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/json3/lib/json3.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/bower_components/angular-cache/dist/angular-cache.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/flow.js/dist/flow.js"></script>
+    <script src="/bower_components/ng-flow/dist/ng-flow.js"></script>
+    <script src="/bower_components/eventEmitter/EventEmitter.js"></script>
+    <script src="/bower_components/eventie/eventie.js"></script>
+    <script src="/bower_components/imagesloaded/imagesloaded.js"></script>
+    <script src="/bower_components/angular-images-loaded/angular-images-loaded.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js js/app.js-->
     <!-- inject:js -->
     <script src="/src/client/app/app.module.js"></script>
-    <script src="/src/client/app/admin/admin.module.js"></script>
     <script src="/src/client/app/blocks/exception/exception.module.js"></script>
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
-    <script src="/src/client/app/dashboard/dashboard.module.js"></script>
+    <script src="/src/client/app/features/login/login.module.js"></script>
+    <script src="/src/client/app/features/sites/sites.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
+    <script src="/src/client/app/services/services.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
-    <script src="/src/client/app/admin/admin.controller.js"></script>
-    <script src="/src/client/app/admin/admin.route.js"></script>
+    <script src="/src/client/app/app.run.js"></script>
     <script src="/src/client/app/blocks/exception/exception-handler.provider.js"></script>
     <script src="/src/client/app/blocks/exception/exception.js"></script>
     <script src="/src/client/app/blocks/logger/logger.js"></script>
@@ -76,12 +100,19 @@
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
     <script src="/src/client/app/core/dataservice.js"></script>
-    <script src="/src/client/app/dashboard/dashboard.controller.js"></script>
-    <script src="/src/client/app/dashboard/dashboard.route.js"></script>
-    <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
-    <script src="/src/client/app/layout/ht-top-nav.directive.js"></script>
+    <script src="/src/client/app/features/login/login.controller.js"></script>
+    <script src="/src/client/app/features/login/login.route.js"></script>
+    <script src="/src/client/app/features/sites/sites.controller.js"></script>
+    <script src="/src/client/app/features/sites/sites.route.js"></script>
+    <script src="/src/client/app/layout/globalErrorFEedbackDirective.js"></script>
+    <script src="/src/client/app/layout/pageContentContainerDirective.js"></script>
+    <script src="/src/client/app/layout/portletForm.js"></script>
     <script src="/src/client/app/layout/shell.controller.js"></script>
-    <script src="/src/client/app/layout/sidebar.controller.js"></script>
+    <script src="/src/client/app/layout/spinnerButton.directive.js"></script>
+    <script src="/src/client/app/layout/top-navbar.directive.js"></script>
+    <script src="/src/client/app/services/auth.interceptor.service.js"></script>
+    <script src="/src/client/app/services/authService.js"></script>
+    <script src="/src/client/app/services/sitesService.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
     <!-- endinject -->
@@ -89,5 +120,16 @@
     <!-- inject:templates:js -->
     <!-- endinject -->
     <!-- endbuild -->
+
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core componets
+            Layout.init(); // init layout
+            Demo.init(); // init demo(theme settings page)
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
+
 </body>
 </html>

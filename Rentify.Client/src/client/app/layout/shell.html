@@ -1,19 +1,11 @@
-<div ng-controller="ShellController as vm">
-    <header class="clearfix">
-        <ht-top-nav navline="vm.navline"></ht-top-nav>
-    </header>
-    <section id="content" class="content">
-        <div ng-include="'app/layout/sidebar.html'"></div>
+<top-nav-bar></top-nav-bar>
+<div ui-view=""></div>
 
-        <div ui-view class="shuffle-animation"></div>
-
-        <div ngplus-overlay
-             ngplus-overlay-delay-in="50"
-             ngplus-overlay-delay-out="700"
-             ngplus-overlay-animation="dissolve-animation">
-            <img src="images/busy.gif"/>
-
-            <div class="page-spinner-message overlay-message">{{vm.busyMessage}}</div>
-        </div>
-    </section>
+<div class="page-footer">
+    <div class="container">
+        2014 &copy; Metronic. All Rights Reserved.
+    </div>
+</div>
+<div class="scroll-to-top">
+    <i class="icon-arrow-up"></i>
 </div>

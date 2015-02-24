@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/client/app/services/auth.interceptor.service.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../prettify.css">
+
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">./src/client/app/services/auth.interceptor.service.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">8.93% <small>(5 / 56)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">10% <small>(1 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">8.93% <small>(5 / 56)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./src/client/app/services\</a> &#187; auth.interceptor.service.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿(function () {
+    'use strict';
+&nbsp;
+    angular
+        .module('app.services')
+        .factory('authInterceptorService', auth);
+&nbsp;
+    auth.$inject = ['$rootScope', '$q', '$location', '$injector', 'localStorageService'];
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function auth($rootScope, $q, $location, $injector, localStorageService) {</span>
+<span class="cstat-no" title="statement not covered" >        var authInterceptorServiceFactory = {};</span>
+<span class="cstat-no" title="statement not covered" >        var $http;</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >        function broadcastFriendlyErrorMessage(rejection) {</span>
+            /*jshint maxcomplexity:false */
+<span class="cstat-no" title="statement not covered" >            console.log('global generic error handler: rejection:', rejection);</span>
+<span class="cstat-no" title="statement not covered" >            var msg = '&lt;p&gt;We are sorry but you experienced an unexpected error. ' +</span>
+                'We have done all we can to notify the right people so all you can do right now is try again.&lt;/p&gt;';
+&nbsp;
+            //the case where the client cannot connect to the server
+<span class="cstat-no" title="statement not covered" >            if (!rejection.data &amp;&amp; rejection.status === 0 &amp;&amp; rejection.statusText === '') {</span>
+<span class="cstat-no" title="statement not covered" >                msg = 'Unable to connect to the server, please try again in a couple of seconds.';</span>
+            }
+            else <span class="cstat-no" title="statement not covered" >if (rejection.status === 400) {</span>
+                //the case where we push a custom error description down the wire
+<span class="cstat-no" title="statement not covered" >                if (rejection.data &amp;&amp; rejection.data.error_description) {// jshint ignore:line</span>
+<span class="cstat-no" title="statement not covered" >                    msg = rejection.data.error_description;/</span>/ jshint ignore:line
+                }
+                    //the case where asp.net modelstate errors come down the wire
+                else <span class="cstat-no" title="statement not covered" >if (rejection.data &amp;&amp; rejection.data.message === 'The request is invalid.' &amp;&amp;</span>
+                            rejection.data.modelState) {
+<span class="cstat-no" title="statement not covered" >                    var errors = [];</span>
+<span class="cstat-no" title="statement not covered" >                    for (var key in rejection.data.modelState) {</span>
+<span class="cstat-no" title="statement not covered" >                        if (rejection.data.modelState.hasOwnProperty(key)) {</span>
+<span class="cstat-no" title="statement not covered" >                            for (var i = 0; i &lt; rejection.data.modelState[key].length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                                errors.push(rejection.data.modelState[key][i]);</span>
+                            }
+                        }
+                    }
+<span class="cstat-no" title="statement not covered" >                    msg = '&lt;strong&gt;Failed to save changes due to:&lt;/strong&gt;&lt;BR/&gt;' + errors.join('&lt;br/&gt;');</span>
+                }
+                else <span class="cstat-no" title="statement not covered" >if (rejection.data &amp;&amp; rejection.data.message) {</span>
+<span class="cstat-no" title="statement not covered" >                    msg = rejection.data.message;</span>
+                }
+            }
+            else <span class="cstat-no" title="statement not covered" >if (rejection.status === 500) {</span>
+<span class="cstat-no" title="statement not covered" >                if (rejection.data.exceptionMessage) {</span>
+<span class="cstat-no" title="statement not covered" >                    msg = msg + '&lt;p&gt;&lt;strong&gt;Exception Type:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;' + rejection.data.exceptionType + '&lt;/p&gt;';</span>
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $rootScope.$broadcast('globalErrorEvent', msg);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var _request = <span class="fstat-no" title="function not covered" >function (config) {</span></span>
+<span class="cstat-no" title="statement not covered" >            config = config || {};</span>
+<span class="cstat-no" title="statement not covered" >            config.headers = config.headers || {};</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            var authData = localStorageService.get('authorizationData');</span>
+<span class="cstat-no" title="statement not covered" >            if (authData) {</span>
+<span class="cstat-no" title="statement not covered" >                config.headers.Authorization = 'Bearer ' + authData.token;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            $rootScope.$broadcast('globalClearErrorEvent');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return config;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var _responseError = <span class="fstat-no" title="function not covered" >function (rejection) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var deferred = $q.defer();</span>
+<span class="cstat-no" title="statement not covered" >            if (rejection.status === 401) {</span>
+<span class="cstat-no" title="statement not covered" >                var authService = $injector.get('authService');</span>
+<span class="cstat-no" title="statement not covered" >                authService.refreshToken().then(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                    _retryHttpRequest(rejection.config, deferred);</span>
+                }, <span class="fstat-no" title="function not covered" >function (httpData) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('failed to refresh token: ', httpData);</span>
+<span class="cstat-no" title="statement not covered" >                    authService.logOut();</span>
+<span class="cstat-no" title="statement not covered" >                    $location.path('/login');</span>
+<span class="cstat-no" title="statement not covered" >                    deferred.reject(rejection);</span>
+                });
+            }
+            else {
+                //generic error handling logic goes here
+<span class="cstat-no" title="statement not covered" >                broadcastFriendlyErrorMessage(rejection);</span>
+<span class="cstat-no" title="statement not covered" >                deferred.reject(rejection);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return deferred.promise;</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        var _retryHttpRequest = <span class="fstat-no" title="function not covered" >function (config, deferred) {</span></span>
+<span class="cstat-no" title="statement not covered" >            $http = $http || $injector.get('$http');</span>
+<span class="cstat-no" title="statement not covered" >            $http(config).then(<span class="fstat-no" title="function not covered" >function (response) {</span></span>
+<span class="cstat-no" title="statement not covered" >                deferred.resolve(response);</span>
+            }, <span class="fstat-no" title="function not covered" >function (response) {</span>
+<span class="cstat-no" title="statement not covered" >                deferred.reject(response);</span>
+            });
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        authInterceptorServiceFactory.request = _request;</span>
+<span class="cstat-no" title="statement not covered" >        authInterceptorServiceFactory.responseError = _responseError;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return authInterceptorServiceFactory;</span>
+    }
+})();
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 24 2015 14:54:30 GMT+0200 (South Africa Standard Time)</div>
+</div>
+
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+
+<script src="../sorter.js"></script>
+</body>
+</html>

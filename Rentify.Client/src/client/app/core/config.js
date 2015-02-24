@@ -14,7 +14,10 @@
 
     var config = {
         appErrorPrefix: '[rentifyClientApp Error] ',
-        appTitle: 'rentifyClientApp'
+        appTitle: 'Rentify',
+        serverBaseUri: 'http://localhost:63187/', //need to figure out how to swap this out for different environments
+        clientId: 'rentifyAngularMainApp',
+        environment: 'LOCAL'
     };
 
     core.value('config', config);
@@ -30,5 +33,17 @@
         exceptionHandlerProvider.configure(config.appErrorPrefix);
         routerHelperProvider.configure({docTitle: config.appTitle + ': '});
     }
+
+    core.config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptorService');
+    });
+
+    core.config(['flowFactoryProvider', function (flowFactoryProvider) {
+        flowFactoryProvider.defaults = {
+            permanentErrors: [500, 501],
+            maxChunkRetries: 2,
+            chunkRetryInterval: 5000
+        };
+    }]);
 
 })();
