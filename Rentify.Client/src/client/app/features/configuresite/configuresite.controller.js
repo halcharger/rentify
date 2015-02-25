@@ -5,18 +5,24 @@
         .module('app.configuresite')
         .controller('ConfigureSiteController', Controller);
 
-    Controller.$inject = ['$state', '$stateParams', 'routerHelper'];
+    Controller.$inject = ['$state', '$stateParams', 'routerHelper', 'sitesService'];
 
-    function Controller($state, $stateParams, routerHelper) {
+    function Controller($state, $stateParams, routerHelper, sitesService) {
         var states = routerHelper.getStates();
-        console.log('configuresite param siteUniqueId: ' + $stateParams.siteUniqueId);
+        var siteUniqueId = $stateParams.siteUniqueId;
 
         var vm = this;
         vm.isCurrent = isCurrent;
+        vm.site;
 
         activate();
 
-        function activate() { getNavRoutes(); }
+        function activate() {
+            getNavRoutes();
+            sitesService.getSite(siteUniqueId).then(function(result) {
+                vm.site = result;
+            });
+        }
 
         function getNavRoutes() {
             vm.navRoutes = states.filter(function (r) {

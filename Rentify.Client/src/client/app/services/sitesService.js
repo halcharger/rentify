@@ -41,6 +41,18 @@
             return deferred.promise;
         };
 
+        service.getSite = function(siteUniqueId) {
+            return service.getMySites()
+                .then(function(results) {
+                    for (var i = 0; i < results.length; i++) {
+                        if (results[i].uniqueId === siteUniqueId) {
+                            return results[i];
+                        }
+                    }
+            });
+        };
+
+
         service.refreshMySites = function () {
             return $http.get(baseUri + 'api/mysites')
               .success(function (results) {
