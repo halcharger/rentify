@@ -3,13 +3,15 @@
 
     angular
         .module('app.configuresite')
-        .controller('ConfigureSiteController', ConfigureSiteController);
+        .controller('ConfigureSiteController', Controller);
 
-    ConfigureSiteController.$inject = ['$state', 'routerHelper'];
+    Controller.$inject = ['$state', '$stateParams', 'routerHelper'];
 
-    function ConfigureSiteController($state, routerHelper) {
-        var vm = this;
+    function Controller($state, $stateParams, routerHelper) {
         var states = routerHelper.getStates();
+        console.log('configuresite param siteUniqueId: ' + $stateParams.siteUniqueId);
+
+        var vm = this;
         vm.isCurrent = isCurrent;
 
         activate();

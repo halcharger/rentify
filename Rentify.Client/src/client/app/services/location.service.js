@@ -9,7 +9,9 @@
 
     function location($location) {
         var service = {
-            goToConfigureSite: function () { $location.path('/configuresite'); },
+            goToConfigureSite: function(site) {
+                 $location.path('/configuresite/' + site.uniqueId);
+            },
             goToDeleteSite: function() { $location.path('/configuresite.delete'); }
         };
 

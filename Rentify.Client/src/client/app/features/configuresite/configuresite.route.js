@@ -16,7 +16,7 @@
             {
                 state: 'configuresite',
                 config: {
-                    url: '/configuresite',
+                    url: '/configuresite/{siteUniqueId}',
                     templateUrl: 'app/features/configuresite/configuresite.html',
                     controller: 'ConfigureSiteController',
                     controllerAs: 'vm',
