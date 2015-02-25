@@ -3,13 +3,12 @@
 
     angular
         .module('app.sites')
-        .controller('SitesController', SitesController);
+        .controller('SitesController', Controller);
 
-    SitesController.$inject = ['$location', 'authService', 'sitesService'];
+    Controller.$inject = ['locationService', 'authService', 'sitesService'];
 
-    function SitesController($location, authService, sitesService) {
+    function Controller(locationService, authService, sitesService) {
         var vm = this;
-        vm.title = 'My Sites';
         vm.sites = [];
 
         vm.getSites = function () {
@@ -23,23 +22,19 @@
         vm.refreshSites = function () {
             vm.loadingSites = true;
             return sitesService.refreshMySites()
-              .success(function (results) {
-                  vm.sites = results;
-                  vm.loadingSites = false;
-              })
-              .error(function () {
-                  vm.loadingSites = false;
-              });
+                .success(function(results) {
+                    vm.sites = results;
+                });
         };
 
         vm.deleteSite = function (site) {
             sitesService.setSelectedSite(site);
-            $location.path('deletesite');
+            locationService.goToDeleteSite(site);
         };
 
         vm.editSite = function (site) {
             sitesService.setSelectedSite(site);
-            $location.path('/configuresite');
+            locationService.goToConfigureSite(site);
         };
 
         activate();
