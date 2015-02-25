@@ -7,6 +7,7 @@ var gulp = require('gulp');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({lazy: true});
+var ngConstant = require('gulp-ng-constant');
 
 var colors = $.util.colors;
 var envenv = $.util.env;
@@ -191,7 +192,19 @@ gulp.task('build-specs', ['templatecache'], function(done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts'], function() {
+gulp.task('build', ['environment-local', 'optimize', 'images', 'fonts'], function () {
+    build();
+});
+
+gulp.task('build-dev', ['environment-dev', 'optimize', 'images', 'fonts'], function () {
+    build();
+});
+
+gulp.task('build-prod', ['environment-prod', 'optimize', 'images', 'fonts'], function () {
+    build();
+});
+
+function build() {
     log('Building everything');
 
     var msg = {
@@ -202,7 +215,20 @@ gulp.task('build', ['optimize', 'images', 'fonts'], function() {
     del(config.temp);
     log(msg);
     notify(msg);
+}
+
+gulp.task('environment-local', function () {
+    generateEnvironmentConstant('local');
 });
+
+gulp.task('environment-dev', function () {
+    generateEnvironmentConstant('dev');
+});
+
+gulp.task('environment-prod', function () {
+    generateEnvironmentConstant('prod');
+});
+
 
 /**
  * Optimize all files, move to a build folder,
@@ -325,7 +351,15 @@ gulp.task('autotest', function(done) {
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-dev', ['inject'], function() {
+gulp.task('serve-dev', ['environment-dev', 'inject'], function() {
+    serve(true /*isDev*/);
+});
+
+gulp.task('serve-local', ['environment-local', 'inject'], function() {
+    serve(true /*isDev*/);
+});
+
+gulp.task('serve-prod', ['environment-prod', 'inject'], function() {
     serve(true /*isDev*/);
 });
 
@@ -334,7 +368,15 @@ gulp.task('serve-dev', ['inject'], function() {
  * --debug-brk or --debug
  * --nosync
  */
-gulp.task('serve-build', ['build'], function() {
+gulp.task('serve-build-local', ['build'], function() {
+    serve(false /*isDev*/);
+});
+
+gulp.task('serve-build-dev', ['build-dev'], function() {
+    serve(false /*isDev*/);
+});
+
+gulp.task('serve-build-prod', ['build-prod'], function() {
     serve(false /*isDev*/);
 });
 
@@ -368,6 +410,17 @@ gulp.task('bump', function() {
 });
 
 ////////////////
+
+function generateEnvironmentConstant(env) {
+    var myConfig = require(config.environmentsJson);
+    var envConfig = myConfig[env];
+    return ngConstant({
+        name: 'app',
+        deps:false,
+        constants: envConfig,
+        stream: true
+    }).pipe(gulp.dest(config.clientApp));
+}
 
 /**
  * When files change, log it

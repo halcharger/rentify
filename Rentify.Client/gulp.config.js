@@ -27,6 +27,7 @@ module.exports = function() {
         ],
         build: './build/',
         client: client,
+        clientApp : clientApp,
         less: [client + 'styles/**/*.less', client + 'styles/**/*.css'],
         css: [temp + '/**/*.css'],
         fonts: bower.directory + 'font-awesome/fonts/**/*.*',
@@ -34,6 +35,7 @@ module.exports = function() {
         htmltemplates: clientApp + '**/*.html',
         images: client + 'images/**/*.*',
         index: client + 'index.html',
+        environmentsJson: clientApp + 'environments.config.json',
         // app js, with no specs
         js: [
             clientApp + '**/*.module.js',

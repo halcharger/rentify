@@ -1,0 +1,23 @@
+﻿{
+    "local": {
+        "environment": {
+            "serverBaseUri": "http://localhost:63187/",
+            "clientId": "rentifyAngularMainApp",
+            "environment": "LOCAL"
+        }
+    },
+    "dev": {
+        "environment": {
+            "serverBaseUri": "/",
+            "clientId": "rentifyAngularMainApp",
+            "environment": "DEV"
+        }
+    },
+    "prod": {
+        "environment": {
+            "serverBaseUri": "/",
+            "clientId": "rentifyAngularMainApp",
+            "environment": "LIVE"
+        }
+    }
+}

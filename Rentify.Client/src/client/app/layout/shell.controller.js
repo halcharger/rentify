@@ -5,13 +5,14 @@
         .module('app.layout')
         .controller('ShellController', Controller);
 
-    Controller.$inject = ['$state', '$location', 'routerHelper', 'logger', 'authService'];
+    Controller.$inject = ['$state', '$location', 'routerHelper', 'logger', 'authService', 'environment'];
 
-    function Controller($state, $location, routerHelper, logger, authService) {
+    function Controller($state, $location, routerHelper, logger, authService, environment) {
         var vm = this;
         var states = routerHelper.getStates();
         vm.isCurrent = isCurrent;
         vm.loggedInUser = authService.authentication.userName;
+        vm.environment = environment;
 
         activate();
 
