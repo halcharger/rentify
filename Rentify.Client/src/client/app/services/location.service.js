@@ -3,16 +3,17 @@
 
     angular
         .module('app')
-        .factory('locationService', location);
+        .factory('locationService', locationService);
 
-    location.$inject = ['$location'];
+    locationService.$inject = ['$location'];
 
-    function location($location) {
+    function locationService
+        ($location) {
         var service = {
-            goToConfigureSite: function(site) {
-                 $location.path('/configuresite/' + site.uniqueId);
+            goToConfigureSite: function (site) {
+                $location.path('/configuresite/' + site.uniqueId);
             },
-            goToDeleteSite: function() { $location.path('/configuresite.delete'); }
+            goToDeleteSite: function () { $location.path('/configuresite.delete'); }
         };
 
         return service;

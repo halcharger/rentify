@@ -13,7 +13,7 @@
 
         var vm = this;
         vm.isCurrent = isCurrent;
-        vm.site;
+        vm.site = {};
 
         activate();
 
