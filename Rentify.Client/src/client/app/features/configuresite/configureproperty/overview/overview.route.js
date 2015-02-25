@@ -14,15 +14,15 @@
     function getStates() {
         return [
             {
-                state: 'configuresite.theme',
+                state: 'configuresite.configureproperty.overview',
                 config: {
-                    url: '/theme',
-                    templateUrl: 'app/features/configuresite/theme/theme.html',
-                    //controller: 'ThemeController',
+                    url: '/overview',
+                    templateUrl: 'app/features/configuresite/configureproperty/overview/overview.html',
+                    //controller: 'OverviewController',
                     //controllerAs: 'vm',
-                    title: 'Theme & Styling',
+                    title: 'Overview',
                     settings: {
-                        configureSiteNav: 1
+                        configurePropertyNav: 1
                     }
                 }
             }

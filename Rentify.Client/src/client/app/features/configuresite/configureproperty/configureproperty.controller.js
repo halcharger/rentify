@@ -3,11 +3,11 @@
 
     angular
         .module('app.configuresite')
-        .controller('ConfigureSiteController', ConfigureSiteController);
+        .controller('ConfigurePropertyController', Controller);
 
-    ConfigureSiteController.$inject = ['$state', 'routerHelper'];
+    Controller.$inject = ['$state', 'routerHelper'];
 
-    function ConfigureSiteController($state, routerHelper) {
+    function Controller($state, routerHelper) {
         var vm = this;
         var states = routerHelper.getStates();
         vm.isCurrent = isCurrent;
@@ -18,9 +18,9 @@
 
         function getNavRoutes() {
             vm.navRoutes = states.filter(function (r) {
-                return r.settings && r.settings.configureSiteNav;
+                return r.settings && r.settings.configurePropertyNav;
             }).sort(function (r1, r2) {
-                return r1.settings.configureSiteNav - r2.settings.configureSiteNav;
+                return r1.settings.configurePropertyNav - r2.settings.configurePropertyNav;
             });
         }
 

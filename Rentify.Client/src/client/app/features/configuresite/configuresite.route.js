@@ -20,7 +20,7 @@
                     templateUrl: 'app/features/configuresite/configuresite.html',
                     controller: 'ConfigureSiteController',
                     controllerAs: 'vm',
-                    title: 'Configure Site'
+                    redirectTo: 'configuresite.theme'
                 }
             }
         ];

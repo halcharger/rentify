@@ -14,15 +14,15 @@
     function getStates() {
         return [
             {
-                state: 'configuresite.theme',
+                state: 'configuresite.configureproperty.location',
                 config: {
-                    url: '/theme',
-                    templateUrl: 'app/features/configuresite/theme/theme.html',
-                    //controller: 'ThemeController',
+                    url: '/location',
+                    templateUrl: 'app/features/configuresite/configureproperty/location/location.html',
+                    //controller: 'LocationController',
                     //controllerAs: 'vm',
-                    title: 'Theme & Styling',
+                    title: 'Location',
                     settings: {
-                        configureSiteNav: 1
+                        configurePropertyNav: 2
                     }
                 }
             }

@@ -39,7 +39,7 @@
 
         vm.editSite = function (site) {
             sitesService.setSelectedSite(site);
-            $location.path('/configuresite/configuresite.theme');
+            $location.path('/configuresite');
         };
 
         activate();

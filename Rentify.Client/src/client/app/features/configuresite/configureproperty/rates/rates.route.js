@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.sites')
+        .module('app.configuresite')
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];
@@ -14,15 +14,15 @@
     function getStates() {
         return [
             {
-                state: 'sites',
+                state: 'configuresite.configureproperty.rates',
                 config: {
-                    url: '/sites',
-                    templateUrl: 'app/features/sites/sites.html',
-                    controller: 'SitesController',
-                    controllerAs: 'vm',
+                    url: '/rates',
+                    templateUrl: 'app/features/configuresite/configureproperty/rates/rates.html',
+                    //controller: 'RatesController',
+                    //controllerAs: 'vm',
+                    title: 'Rates',
                     settings: {
-                        nav: 1,
-                        content: '<i class="fa fa-globe"></i> Sites'
+                        configurePropertyNav: 4
                     }
                 }
             }

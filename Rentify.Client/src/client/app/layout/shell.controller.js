@@ -3,33 +3,40 @@
 
     angular
         .module('app.layout')
-        .controller('ShellController', ShellController);
+        .controller('ShellController', Controller);
 
-    ShellController.$inject = ['$timeout', 'config', 'logger'];
-    /* @ngInject */
-    function ShellController($timeout, config, logger) {
+    Controller.$inject = ['$state', '$location', 'routerHelper', 'logger', 'authService'];
+
+    function Controller($state, $location, routerHelper, logger, authService) {
         var vm = this;
-        vm.busyMessage = 'Please wait ...';
-        vm.isBusy = true;
-        vm.showSplash = true;
-        vm.navline = {
-            title: config.appTitle,
-            text: 'Created by John Papa',
-            link: 'http://twitter.com/john_papa'
-        };
+        var states = routerHelper.getStates();
+        vm.isCurrent = isCurrent;
+        vm.loggedInUser = authService.authentication.userName;
 
         activate();
 
-        function activate() {
-            logger.success(config.appTitle + ' loaded!', null);
-            hideSplash();
+        function activate() { getNavRoutes(); }
+
+        function getNavRoutes() {
+            vm.navRoutes = states.filter(function (r) {
+                return r.settings && r.settings.nav;
+            }).sort(function (r1, r2) {
+                return r1.settings.nav - r2.settings.nav;
+            });
         }
 
-        function hideSplash() {
-            //Force a 1 second delay so we can see the splash.
-            $timeout(function() {
-                vm.showSplash = false;
-            }, 1000);
+        function isCurrent(route) {
+            if (!route.title || !$state.current || !$state.current.title) {
+                return '';
+            }
+            var menuName = route.name;
+            var cssClass = $state.current.name.substr(0, menuName.length) === menuName ? 'current' : '';
+            return cssClass;
         }
+
+        vm.logOut = function () {
+            authService.logOut();
+            $location.path('/login');
+        };
     }
 })();

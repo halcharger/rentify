@@ -1,0 +1,14 @@
+﻿<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <span class="navbar-brand">Configure Property: {{propertyName}} </span>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li ng-class="vm.isCurrent(r)"
+                ng-repeat="r in vm.navRoutes">
+                <a ui-sref="{{r.name}}" aria-expanded="false">{{r.title}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div ui-view></div>

@@ -14,15 +14,15 @@
     function getStates() {
         return [
             {
-                state: 'configuresite.theme',
+                state: 'configuresite.configureproperty.reviews',
                 config: {
-                    url: '/theme',
-                    templateUrl: 'app/features/configuresite/theme/theme.html',
-                    //controller: 'ThemeController',
+                    url: '/reviews',
+                    templateUrl: 'app/features/configuresite/configureproperty/reviews/reviews.html',
+                    //controller: 'ReviewsController',
                     //controllerAs: 'vm',
-                    title: 'Theme & Styling',
+                    title: 'Reviews',
                     settings: {
-                        configureSiteNav: 1
+                        configurePropertyNav: 6
                     }
                 }
             }

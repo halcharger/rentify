@@ -14,15 +14,15 @@
     function getStates() {
         return [
             {
-                state: 'configuresite.theme',
+                state: 'configuresite.configureproperty.gallery',
                 config: {
-                    url: '/theme',
-                    templateUrl: 'app/features/configuresite/theme/theme.html',
-                    //controller: 'ThemeController',
+                    url: '/gallery',
+                    templateUrl: 'app/features/configuresite/configureproperty/gallery/gallery.html',
+                    //controller: 'GalleryController',
                     //controllerAs: 'vm',
-                    title: 'Theme & Styling',
+                    title: 'Gallery',
                     settings: {
-                        configureSiteNav: 1
+                        configurePropertyNav: 3
                     }
                 }
             }

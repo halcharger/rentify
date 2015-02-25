@@ -14,15 +14,15 @@
     function getStates() {
         return [
             {
-                state: 'configuresite.theme',
+                state: 'configuresite.configureproperty.contact',
                 config: {
-                    url: '/theme',
-                    templateUrl: 'app/features/configuresite/theme/theme.html',
-                    //controller: 'ThemeController',
+                    url: '/contact',
+                    templateUrl: 'app/features/configuresite/configureproperty/contact/contact.html',
+                    //controller: 'ContactController',
                     //controllerAs: 'vm',
-                    title: 'Theme & Styling',
+                    title: 'Contact',
                     settings: {
-                        configureSiteNav: 1
+                        configurePropertyNav: 5
                     }
                 }
             }
