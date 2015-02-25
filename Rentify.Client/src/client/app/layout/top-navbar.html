@@ -13,7 +13,7 @@
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="" class="dropdown-toggle">
-                            <span class="username username-hide-mobile">{{vm.authentication.userName}}</span>
+                            <span class="username username-hide-mobile">{{vm.loggedInUser}}</span>
                         </a>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
@@ -30,24 +30,13 @@
             <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
             <div class="hor-menu">
                 <ul class="nav navbar-nav">
-                    <li class="menu-dropdown mega-menu-dropdown active">
-                        <a href="/dashboard" class="dropdown-toggle">
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="menu-dropdown mega-menu-dropdown">
-                        <a href="/sites" class="dropdown-toggle">
-                            My Sites
-                        </a>
-                    </li>
-                    <li class="menu-dropdown mega-menu-dropdown">
-                        <a href="/reservations" class="dropdown-toggle">
-                            Reservations and Availability
-                        </a>
+                    <li class="menu-dropdown mega-menu-dropdown" ng-class="vm.isCurrent(r)"
+                        ng-repeat="r in vm.navRoutes">
+                        <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
                     </li>
                     <li class="menu-dropdown mega-menu-dropdown">
                         <a ng-click="vm.logOut();" class="dropdown-toggle">
-                            Logout
+                            <i class="fa fa-power-off"></i> Logout
                         </a>
                     </li>
                 </ul>

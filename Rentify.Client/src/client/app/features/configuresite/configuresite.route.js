@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.login')
+        .module('app.configuresite')
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];
@@ -14,13 +14,13 @@
     function getStates() {
         return [
             {
-                state: 'login',
+                state: 'configuresite',
                 config: {
-                    url: '/login',
-                    templateUrl: 'app/features/login/login.html',
-                    controller: 'LoginController',
+                    url: '/configuresite',
+                    templateUrl: 'app/features/configuresite/configuresite.html',
+                    controller: 'ConfigureSiteController',
                     controllerAs: 'vm',
-                    title: 'Login'
+                    title: 'Configure Site'
                 }
             }
         ];

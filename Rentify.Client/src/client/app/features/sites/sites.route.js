@@ -14,6 +14,16 @@
     function getStates() {
         return [
             {
+                state: 'default',
+                config: {
+                    url: '/',
+                    templateUrl: 'app/features/sites/sites.html',
+                    controller: 'SitesController',
+                    controllerAs: 'vm',
+                    title: 'My Sites'
+                }
+            },
+            {
                 state: 'sites',
                 config: {
                     url: '/sites',
@@ -22,8 +32,8 @@
                     controllerAs: 'vm',
                     title: 'My Sites',
                     settings: {
-                        nav: 2,
-                        content: '<i class="fa fa-lock"></i> Sites'
+                        nav: 1,
+                        content: '<i class="fa fa-globe"></i> Sites'
                     }
                 }
             }

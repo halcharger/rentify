@@ -5,9 +5,9 @@
         .module('app.sites')
         .controller('SitesController', SitesController);
 
-    SitesController.$inject = ['$location', 'authService', 'sitesService', 'logger'];
+    SitesController.$inject = ['$location', 'authService', 'sitesService'];
 
-    function SitesController($location, authService, sitesService, logger) {
+    function SitesController($location, authService, sitesService) {
         var vm = this;
         vm.title = 'My Sites';
         vm.sites = [];
@@ -16,7 +16,6 @@
             vm.loadingSites = true;
             sitesService.getMySites()
               .then(function (results) {
-                  logger.info('got sites results', results);
                   vm.sites = results;
               });
         };
@@ -40,14 +39,13 @@
 
         vm.editSite = function (site) {
             sitesService.setSelectedSite(site);
-            $location.path('editsite-theme');
+            $location.path('/configuresite/configuresite.theme');
         };
 
         activate();
 
         function activate() {
             vm.getSites();
-            logger.info('Activated Sites View');
         }
     }
 })();

@@ -1,0 +1,15 @@
+﻿<page-content-container page-heading="EDIT SITE: {{vm.site.name}}">
+    <div class="tabbable tabbable-custom tabbable-noborder">
+        <ul class="nav nav-tabs">
+            <li ng-class="vm.isCurrent(r)"
+                ng-repeat="r in vm.navRoutes">
+                <a ui-sref="{{r.name}}" aria-expanded="false">{{r.title}}</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <div ui-view=""></div>
+            </div>
+        </div>
+    </div>
+</page-content-container>

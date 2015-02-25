@@ -24,6 +24,10 @@
 
     <!-- build:css styles/app.css-->
     <!-- inject:css -->
+    <link rel="stylesheet" href="/.tmp/images-loaded.css">
+    <link rel="stylesheet" href="/.tmp/ngflow.css">
+    <link rel="stylesheet" href="/.tmp/ngplus-overlay.css">
+    <link rel="stylesheet" href="/.tmp/spinkit.css">
     <link rel="stylesheet" href="/.tmp/styles.css">
     <link rel="stylesheet" href="/.tmp/metronic/simple-line-icons/simple-line-icons.min.css">
     <link rel="stylesheet" href="/.tmp/metronic/layout3/css/components-rounded.css">
@@ -86,7 +90,9 @@
     <script src="/src/client/app/blocks/logger/logger.module.js"></script>
     <script src="/src/client/app/blocks/router/router.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
+    <script src="/src/client/app/features/configuresite/configuresite.module.js"></script>
     <script src="/src/client/app/features/login/login.module.js"></script>
+    <script src="/src/client/app/features/reservations/reservations.module.js"></script>
     <script src="/src/client/app/features/sites/sites.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/services/services.module.js"></script>
@@ -100,10 +106,18 @@
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
     <script src="/src/client/app/core/dataservice.js"></script>
+    <script src="/src/client/app/features/configuresite/configuresite.controller.js"></script>
+    <script src="/src/client/app/features/configuresite/configuresite.route.js"></script>
+    <script src="/src/client/app/features/configuresite/pages/pages.route.js"></script>
+    <script src="/src/client/app/features/configuresite/property/property.route.js"></script>
+    <script src="/src/client/app/features/configuresite/settings/settings.route.js"></script>
+    <script src="/src/client/app/features/configuresite/theme/theme.route.js"></script>
     <script src="/src/client/app/features/login/login.controller.js"></script>
     <script src="/src/client/app/features/login/login.route.js"></script>
+    <script src="/src/client/app/features/reservations/reservations.route.js"></script>
     <script src="/src/client/app/features/sites/sites.controller.js"></script>
     <script src="/src/client/app/features/sites/sites.route.js"></script>
+    <script src="/src/client/app/layout/defaultPanel.directive.js"></script>
     <script src="/src/client/app/layout/globalErrorFEedbackDirective.js"></script>
     <script src="/src/client/app/layout/pageContentContainerDirective.js"></script>
     <script src="/src/client/app/layout/portletForm.js"></script>

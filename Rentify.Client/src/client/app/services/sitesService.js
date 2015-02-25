@@ -23,7 +23,6 @@
         var service = {};
 
         service.getMySites = function () {
-            logger.info('entering sitesService.getSites');
             var deferred = $q.defer(),
               start = new Date().getTime(),
               mySitesCache = DSCacheFactory.get(sitesCacheKey);

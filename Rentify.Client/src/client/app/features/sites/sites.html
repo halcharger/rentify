@@ -1,4 +1,4 @@
-﻿<page-content-container page-heading="MY SITES">
+﻿<page-content-container page-heading="MY SITES" fa-icon="fa-globe">
 
     <global-error-feedback></global-error-feedback>
 
@@ -26,6 +26,7 @@
         </div>
 
         <div class="pull-right">
+            <a data-ng-click="vm.refreshSites()" class="btn btn-info btn"><i class="fa fa-refresh"></i> Refresh</a>
             <a href="/addsite" class="btn btn-success btn"><i class="fa fa-plus"></i> Add</a>
         </div>
 

@@ -7,7 +7,9 @@
         'app.layout',
         'app.services',
         'app.sites',
-        'app.login'
+        'app.login',
+        'app.configuresite',
+        'app.reservations'
     ]);
 
 })();
