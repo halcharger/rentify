@@ -14,10 +14,7 @@
 
     var config = {
         appErrorPrefix: '[rentifyClientApp Error] ',
-        appTitle: 'Rentify',
-        serverBaseUri: 'http://localhost:63187/', //need to figure out how to swap this out for different environments
-        clientId: 'rentifyAngularMainApp',
-        environment: 'LOCAL'
+        appTitle: 'Rentify'
     };
 
     core.value('config', config);

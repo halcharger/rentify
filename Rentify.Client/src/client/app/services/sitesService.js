@@ -5,13 +5,13 @@
         .module('app.services')
         .factory('sitesService', factory);
 
-    factory.$inject = ['$http', '$q', 'authService', 'config', 'DSCacheFactory', 'logger'];
+    factory.$inject = ['$http', '$q', 'authService', 'environment', 'DSCacheFactory'];
 
-    function factory($http, $q, authService, config, DSCacheFactory, logger) {
+    function factory($http, $q, authService, environment, DSCacheFactory) {
         authService.redirectToLoginIfNotAuthenticated();
 
         var sitesCacheKey = 'mysites';
-        var baseUri = config.serverBaseUri;
+        var baseUri = environment.serverBaseUri;
         var selectedSite;
 
         var cache = new DSCacheFactory(sitesCacheKey, {
@@ -34,6 +34,7 @@
                   .success(function (results) {
                       console.log('time taken for mysites request: ' +
                           (new Date().getTime() - start) + 'ms');
+                    console.log('sites: ', results);
                       mySitesCache.put(sitesCacheKey, results);
                       deferred.resolve(results);
                   });

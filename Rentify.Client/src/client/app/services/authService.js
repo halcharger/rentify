@@ -5,11 +5,12 @@
         .module('app.services')
         .factory('authService', AuthService);
 
-    AuthService.$inject = ['$q', '$injector', '$location', 'localStorageService', 'config'];
+    AuthService.$inject = ['$q', '$injector', '$location', 'localStorageService', 'environment'];
 
-    function AuthService($q, $injector, $location, localStorageService, config) {
+    function AuthService($q, $injector, $location, localStorageService, environment) {
 
-        var serviceBase = config.serverBaseUri;
+        var serviceBase = environment.serverBaseUri;
+        var clientId = environment.clientId;
         var $http;
         var authServiceFactory = {};
 
@@ -48,7 +49,7 @@
             var data = 'grant_type=password&username=' + loginData.userName + '&password=' + loginData.password;
 
             if (loginData.useRefreshTokens) {
-                data = data + '&client_id=' + config.clientId;
+                data = data + '&client_id=' + clientId;
             }
 
             $http = $http || $injector.get('$http');
@@ -118,7 +119,7 @@
                 var data = 'grant_type=refresh_token&refresh_token=' +
                             authData.refreshToken +
                             '&client_id=' +
-                            config.clientId;
+                            clientId;
 
                 localStorageService.remove('authorizationData');
 
