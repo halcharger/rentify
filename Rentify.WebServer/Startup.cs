@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Configuration;
+using System.Web.Http;
 using AdaptiveSystems.AspNetIdentity.OAuth;
 using FluentValidation.WebApi;
 using log4net.Config;
@@ -25,6 +26,13 @@ namespace Rentify.WebServer
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            //redirect everything that isn't a WebApi route through to index.html (SPA staring point)
+            config.Routes.MapHttpRoute(
+                name: "spa-route",
+                routeTemplate: "{*anything}",
+                defaults: "~/index.html"
+                );
 
             FluentValidationModelValidatorProvider.Configure(config);
 
