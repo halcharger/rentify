@@ -1,9 +1,9 @@
 angular.module("app")
 
 .constant("environment", {
-	"serverBaseUri": "http://localhost:63187/",
+	"serverBaseUri": "/",
 	"clientId": "rentifyAngularMainApp",
-	"environment": "LOCAL"
+	"environment": "DEV"
 })
 
 ;
