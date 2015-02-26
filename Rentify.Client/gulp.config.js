@@ -23,6 +23,7 @@ module.exports = function() {
         alljs: [
             './src/**/*.js',
             './*.js',
+            '!./src/client/app/constants.js',
             '!./src/client/scripts/metronic/**/*.js'
         ],
         build: './build/',
