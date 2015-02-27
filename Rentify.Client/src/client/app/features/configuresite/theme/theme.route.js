@@ -18,8 +18,8 @@
                 config: {
                     url: '/theme',
                     templateUrl: 'app/features/configuresite/theme/theme.html',
-                    //controller: 'ThemeController',
-                    //controllerAs: 'vm',
+                    controller: 'ThemeController',
+                    controllerAs: 'vm',
                     title: 'Theme & Styling',
                     settings: {
                         configureSiteNav: 1

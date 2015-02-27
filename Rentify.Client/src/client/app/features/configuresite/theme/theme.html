@@ -6,7 +6,9 @@
 <default-panel panel-heading="Theme">
     <div class="form-group">
         <label for="theme">Theme</label>
-        <select id="theme" name="theme" ng-model="vm.selectedTheme" ng-options="theme as theme for theme in vm.themes" class="form-control"></select>
+        <select id="theme" name="theme" ng-model="vm.site.themeId"
+                ng-options="theme as theme for theme in vm.themes" 
+                class="form-control"></select>
     </div>
 </default-panel>
 

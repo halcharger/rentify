@@ -20,7 +20,12 @@
                     templateUrl: 'app/features/configuresite/configuresite.html',
                     controller: 'ConfigureSiteController',
                     controllerAs: 'vm',
-                    redirectTo: 'configuresite.theme'
+                    redirectTo: 'configuresite.theme',
+                    resolve:{
+                        siteUniqueId: ['$stateParams', function ($stateParams) {
+                            return $stateParams.siteUniqueId;
+                            }]
+                        }
                 }
             }
         ];

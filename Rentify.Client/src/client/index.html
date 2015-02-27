@@ -24,6 +24,8 @@
 
     <!-- build:css styles/app.css-->
     <!-- inject:css -->
+    <link rel="stylesheet" href="/.tmp/animations.css">
+    <link rel="stylesheet" href="/.tmp/fontAwesomeRadioButtonsAndCheckboxes.css">
     <link rel="stylesheet" href="/.tmp/images-loaded.css">
     <link rel="stylesheet" href="/.tmp/ngflow.css">
     <link rel="stylesheet" href="/.tmp/ngplus-overlay.css">
@@ -41,8 +43,8 @@
 <body>
     <div ng-include="'app/layout/shell.html'"></div>
     <div ngplus-overlay
-         ngplus-overlay-delay-in="50"
-         ngplus-overlay-delay-out="300"
+         ngplus-overlay-delay-in="0"
+         ngplus-overlay-delay-out="0"
          ngplus-overlay-animation="dissolve-animation">
         <div class="spinner">
             <div class="double-bounce1"></div>
@@ -116,6 +118,7 @@
     <script src="/src/client/app/features/configuresite/configuresite.route.js"></script>
     <script src="/src/client/app/features/configuresite/pages/pages.route.js"></script>
     <script src="/src/client/app/features/configuresite/settings/settings.route.js"></script>
+    <script src="/src/client/app/features/configuresite/theme/theme.controller.js"></script>
     <script src="/src/client/app/features/configuresite/theme/theme.route.js"></script>
     <script src="/src/client/app/features/login/login.controller.js"></script>
     <script src="/src/client/app/features/login/login.route.js"></script>
