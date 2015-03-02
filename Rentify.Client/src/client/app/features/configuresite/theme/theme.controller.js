@@ -6,7 +6,7 @@
         .controller('ThemeController', theme);
 
     theme.$inject = [
-        'siteUniqueId', 'sitesService', 'logger']; 
+        'siteUniqueId', 'sitesService', 'logger'];
 
     function theme(siteUniqueId, sitesService, logger) {
         /* jshint validthis:true */
@@ -18,17 +18,16 @@
 
         function activate() {
             sitesService.getSite(siteUniqueId).then(function (result) {
-                console.log('got site from service: ', result);
                 vm.site = result;
             });
         }
 
         vm.save = function () {
             return sitesService.updateTheme(vm.site.uniqueId, vm.site.themeId)
-              .success(function () {
-                  logger.success('Successfully updated Theme & Styling for ' + vm.site.name + '.');
-              });
-        }
+                .success(function () {
+                    logger.success('Successfully updated Theme & Styling for ' + vm.site.name + '.');
+                });
+        };
 
     }
 })();

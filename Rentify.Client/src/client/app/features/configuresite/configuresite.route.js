@@ -21,11 +21,11 @@
                     controller: 'ConfigureSiteController',
                     controllerAs: 'vm',
                     redirectTo: 'configuresite.theme',
-                    resolve:{
+                    resolve: {
                         siteUniqueId: ['$stateParams', function ($stateParams) {
                             return $stateParams.siteUniqueId;
-                            }]
-                        }
+                        }]
+                    }
                 }
             }
         ];

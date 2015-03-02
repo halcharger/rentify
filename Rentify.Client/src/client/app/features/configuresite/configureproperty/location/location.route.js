@@ -18,8 +18,8 @@
                 config: {
                     url: '/location',
                     templateUrl: 'app/features/configuresite/configureproperty/location/location.html',
-                    //controller: 'LocationController',
-                    //controllerAs: 'vm',
+                    controller: 'LocationController',
+                    controllerAs: 'vm',
                     title: 'Location',
                     settings: {
                         configurePropertyNav: 2

@@ -34,7 +34,6 @@
                   .success(function (results) {
                       console.log('time taken for mysites request: ' +
                           (new Date().getTime() - start) + 'ms');
-                      console.log('sites: ', results);
                       mySitesCache.put(sitesCacheKey, results);
                       deferred.resolve(results);
                   });

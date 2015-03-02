@@ -18,8 +18,8 @@
                 config: {
                     url: '/overview',
                     templateUrl: 'app/features/configuresite/configureproperty/overview/overview.html',
-                    //controller: 'OverviewController',
-                    //controllerAs: 'vm',
+                    controller: 'OverviewController',
+                    controllerAs: 'vm',
                     title: 'Overview',
                     settings: {
                         configurePropertyNav: 1
