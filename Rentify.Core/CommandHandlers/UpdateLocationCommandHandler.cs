@@ -10,7 +10,7 @@ namespace Rentify.Core.CommandHandlers
 
         public override async Task<IResult> InnerHandle(UpdateLocationCommand message)
         {
-            site.Location = message.Location;
+            site.Property.Location = message.Location;
 
             return SimpleResult.Success();
         }

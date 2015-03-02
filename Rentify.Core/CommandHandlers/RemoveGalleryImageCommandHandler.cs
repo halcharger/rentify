@@ -11,12 +11,12 @@ namespace Rentify.Core.CommandHandlers
 
         public override async Task<IResult> InnerHandle(RemoveGalleryImageCommand message)
         {
-            if (site.Gallery.Images != null)
+            if (site.Property.Gallery.Images != null)
             {
-                var img = site.Gallery.Images.SingleOrDefault(
-                        i => i.GetAzureImageUrl() == message.ImageUrl || 
+                var img = site.Property.Gallery.Images.SingleOrDefault(
+                        i => i.GetAzureImageUrl() == message.ImageUrl ||
                             i.GetImageResizerUrl() == message.ImageUrl);
-                site.Gallery.Images.Remove(img);
+                site.Property.Gallery.Images.Remove(img);
             }
 
             return SimpleResult.Success();

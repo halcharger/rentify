@@ -10,11 +10,11 @@ namespace Rentify.Core.CommandHandlers
 
         public override async Task<IResult> InnerHandle(UpdatePropertyGalleryCommand message)
         {
-            if (site.Gallery.Id != message.Gallery.Id)
+            if (site.Property.Gallery.Id != message.Gallery.Id)
                 return SimpleResult.Failure("The Gallery ID does not match what the system has stored for the Gallery ID");
 
-            site.Gallery.Name = message.Gallery.Name;
-            site.Gallery.Description = message.Gallery.Description;
+            site.Property.Gallery.Name = message.Gallery.Name;
+            site.Property.Gallery.Description = message.Gallery.Description;
 
             return SimpleResult.Success();
         }

@@ -8,8 +8,6 @@ namespace Rentify.Core.Domain
         {
             Pages = new List<WebPage>();
             Property = new Property();
-            Location = new Location();
-            Gallery = new Gallery();
         }
 
         public string Name { get; set; }
@@ -19,8 +17,6 @@ namespace Rentify.Core.Domain
         public string SubTitle { get; set; }
 
         public Property Property { get; set; }
-        public Location Location { get; set; }
-        public Gallery Gallery { get; set; }
         public List<WebPage> Pages { get; set; }
     }
 }

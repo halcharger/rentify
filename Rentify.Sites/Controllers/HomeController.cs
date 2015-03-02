@@ -50,7 +50,7 @@ namespace Rentify.Sites.Controllers
         public ActionResult Gallery()
         {
             var theme = siteProvider.RentifySite.GetTheme();
-            var gallery = siteProvider.RentifySite.Gallery;
+            var gallery = siteProvider.RentifySite.Property.Gallery;
             var viewmodel = new GalleryViewModel
             {
                 GalleryPartialPath = theme.GalleryPartialFile,

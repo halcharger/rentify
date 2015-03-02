@@ -318,6 +318,7 @@
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\AddSiteBindingModel.cs" />
     <Compile Include="Models\PropertyOverviewViewModel.cs" />
+    <Compile Include="Models\PropertyViewModel.cs" />
     <Compile Include="Models\RemoveGalleryImageBindingModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Models\UpdateLocationBindingModel.cs" />

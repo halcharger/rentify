@@ -17,6 +17,7 @@ namespace Rentify.WebServer
                 var azureStorageAccountName = RentifyConfig.RentifyAzureStorageConnectionStringAccountName;
 
                 cfg.CreateMap<RentifySite, SiteViewModel>();
+                cfg.CreateMap<Property, PropertyViewModel>();
                 cfg.CreateMap<PropertyOverview, PropertyOverviewViewModel>();
                 cfg.CreateMap<AzureBlobImage, ImageViewModel>();
                 cfg.CreateMap<Gallery, GalleryViewModel>();
@@ -57,6 +58,11 @@ namespace Rentify.WebServer
         public static IEnumerable<T> MapTo<T>(this IEnumerable<object> input)
         {
             return input.Select(Mapper.Map<T>);
+        }
+
+        public static IEnumerable<SiteViewModel> MapToSiteViewModel(this IEnumerable<RentifySite> input)
+        {
+            return input.Select(i => i.MapTo<SiteViewModel>(i.UniqueId));
         }
 
         public static T MapTo<T>(this object input)

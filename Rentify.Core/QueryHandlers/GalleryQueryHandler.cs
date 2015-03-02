@@ -21,7 +21,7 @@ namespace Rentify.Core.QueryHandlers
             if (siteQuery.IsFailure)
                 return AResultOf<Gallery>.Failure(siteQuery.FailureMessage);
 
-            return AResultOf<Gallery>.Success(siteQuery.Result.Gallery);
+            return AResultOf<Gallery>.Success(siteQuery.Result.Property.Gallery);
             
         }
     }

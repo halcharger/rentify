@@ -21,7 +21,7 @@ namespace Rentify.Core.QueryHandlers
             if (siteQuery.IsFailure)
                 return AResultOf<Location>.Failure(siteQuery.FailureMessage);
 
-            return AResultOf<Location>.Success(siteQuery.Result.Location);
+            return AResultOf<Location>.Success(siteQuery.Result.Property.Location);
         }
     }
 }

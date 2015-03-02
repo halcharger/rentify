@@ -29,7 +29,7 @@ namespace Rentify.WebServer.Controllers
         {
             var query = new MySitesQuery(userProvider.UserId);
             var result = await mediatr.SendAsync(query);
-            return result.MapTo<SiteViewModel>();
+            return result.MapToSiteViewModel();
         }
 
         [HttpPost]
