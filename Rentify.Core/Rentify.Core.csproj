@@ -125,7 +125,9 @@
     <Compile Include="CommandHandlers\DeleteSiteCommandHandler.cs" />
     <Compile Include="CommandHandlers\RemoveGalleryImageCommand.cs" />
     <Compile Include="CommandHandlers\RemoveGalleryImageCommandHandler.cs" />
+    <Compile Include="CommandHandlers\UpdateContactCommand.cs" />
     <Compile Include="CommandHandlers\UpdateLocationCommand.cs" />
+    <Compile Include="CommandHandlers\UpdateContactCommandHandler.cs" />
     <Compile Include="CommandHandlers\UpdateLocationCommandHandler.cs" />
     <Compile Include="CommandHandlers\UpdatePropertyGalleryCommand.cs" />
     <Compile Include="CommandHandlers\UpdatePropertyGalleryCommandHandler.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="CommandHandlers\UpdateSiteComponentBaseHandler.cs" />
     <Compile Include="Data\BlobStorage\RentifyBlobStorageFacade.cs" />
     <Compile Include="Domain\AzureBlobImage.cs" />
+    <Compile Include="Domain\Contact.cs" />
     <Compile Include="Domain\Gallery.cs" />
     <Compile Include="QueryHandlers\GalleryQuery.cs" />
     <Compile Include="QueryHandlers\GalleryQueryHandler.cs" />

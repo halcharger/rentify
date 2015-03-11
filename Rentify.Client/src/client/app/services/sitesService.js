@@ -114,6 +114,14 @@
             return $http.post(baseUri + 'api/site/updatelocation', location);
         };
 
+        service.getContact = function (siteUniqueId) {
+            return $http.get(baseUri + 'api/site/contact?siteUniqueId=' + siteUniqueId);
+        };
+
+        service.updateContact = function (contact) {
+            return $http.post(baseUri + 'api/site/updatecontact', contact);
+        };
+
         service.getGallery = function (siteUniqueId) {
             return $http.get(baseUri + 'api/site/gallery?siteUniqueId=' + siteUniqueId);
         };

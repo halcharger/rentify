@@ -62,6 +62,14 @@ namespace Rentify.WebServer.Controllers
             return await UpdateSiteComponent(command);
         }
 
+        [HttpPost]
+        [Route("api/site/updatecontact")]
+        public async Task<IHttpActionResult> UpdateContact(UpdateContactBindingModel model)
+        {
+            var command = new UpdateContactCommand(userProvider.UserId, model.UniqueId, model.MapTo<Contact>());
+            return await UpdateSiteComponent(command);
+        }
+
         protected async Task<IHttpActionResult> UpdateSiteComponent(UpdateSiteComponentBaseCommand command)
         {
             if (ModelState.NotValid())

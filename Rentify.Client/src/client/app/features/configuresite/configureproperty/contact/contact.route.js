@@ -18,8 +18,8 @@
                 config: {
                     url: '/contact',
                     templateUrl: 'app/features/configuresite/configureproperty/contact/contact.html',
-                    //controller: 'ContactController',
-                    //controllerAs: 'vm',
+                    controller: 'ContactController',
+                    controllerAs: 'vm',
                     title: 'Contact',
                     settings: {
                         configurePropertyNav: 5

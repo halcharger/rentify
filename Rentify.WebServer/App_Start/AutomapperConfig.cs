@@ -21,6 +21,7 @@ namespace Rentify.WebServer
                 cfg.CreateMap<PropertyOverview, PropertyOverviewViewModel>();
                 cfg.CreateMap<AzureBlobImage, ImageViewModel>();
                 cfg.CreateMap<Gallery, GalleryViewModel>();
+                cfg.CreateMap<Contact, ContactViewModel>();
                 cfg.CreateMap<Location, LocationViewModel>()
                     .ForMember(dest =>
                         dest.CustomMapImageUrl, opt =>
@@ -47,6 +48,7 @@ namespace Rentify.WebServer
                     .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src => src));
 
                 cfg.CreateMap<UpdateLocationBindingModel, Location>();
+                cfg.CreateMap<UpdateContactBindingModel, Contact>();
 
                 cfg.CreateMap<WebPage, PageViewModel>();
                 cfg.CreateMap<PageBindingModel, WebPage>();
